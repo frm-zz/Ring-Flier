@@ -1,0 +1,91 @@
+material BeachBall_Material
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.1 0.3 0.1
+			diffuse 0.2 0.7 0.2
+			specular 0.3 1.0 0.3 64.0
+		}
+	}
+}
+material Inactive_Sphere
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.1 0.3 0.1
+			diffuse 0.2 0.7 0.2
+			specular 0.3 1.0 0.3 64.0
+		}
+	}
+}
+material Active_Sphere
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.4 0.0 0.0
+			diffuse 0.5 0.2 0.2
+			specular 0.5 0.3 0.3 64.0
+		}
+	}
+}
+material Relaxing_Sphere
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.3 0.1
+			diffuse 0.4 0.2 0.2
+			specular 0.5 0.3 0.3 64.0
+		}
+	}
+}
+material SkyBox_stormy{
+	technique{
+		pass{
+			lighting on
+			depth_write on
+			
+			texture_unit
+			{
+				cubic_texture stormy.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+material SkyBox_cloudy_noon{
+	technique{
+		pass{
+			lighting off
+			depth_write off
+			fog_override true none
+			texture_unit
+			{
+				cubic_texture cloudy_noon.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+material SkyBox_evening{
+	technique{
+		pass{
+			lighting off
+			depth_write off
+			texture_unit
+			{
+				cubic_texture evening.jpg separateUV
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+

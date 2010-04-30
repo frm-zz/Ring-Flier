@@ -1,0 +1,444 @@
+16:42:40: Creating resource group General
+16:42:40: Creating resource group Internal
+16:42:40: Creating resource group Autodetect
+16:42:40: SceneManagerFactory for type 'DefaultSceneManager' registered.
+16:42:40: Registering ResourceManager for type Material
+16:42:40: Registering ResourceManager for type Mesh
+16:42:40: Registering ResourceManager for type Skeleton
+16:42:40: MovableObjectFactory for type 'ParticleSystem' registered.
+16:42:40: OverlayElementFactory for type Panel registered.
+16:42:40: OverlayElementFactory for type BorderPanel registered.
+16:42:40: OverlayElementFactory for type TextArea registered.
+16:42:40: Registering ResourceManager for type Font
+16:42:40: ArchiveFactory for archive type FileSystem registered.
+16:42:40: ArchiveFactory for archive type Zip registered.
+16:42:40: FreeImage version: 3.10.0
+16:42:40: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+16:42:40: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2
+16:42:40: DDS codec registering
+16:42:40: Registering ResourceManager for type HighLevelGpuProgram
+16:42:40: Registering ResourceManager for type Compositor
+16:42:40: MovableObjectFactory for type 'Entity' registered.
+16:42:40: MovableObjectFactory for type 'Light' registered.
+16:42:40: MovableObjectFactory for type 'BillboardSet' registered.
+16:42:40: MovableObjectFactory for type 'ManualObject' registered.
+16:42:40: MovableObjectFactory for type 'BillboardChain' registered.
+16:42:40: MovableObjectFactory for type 'RibbonTrail' registered.
+16:42:40: Loading library .\RenderSystem_GL
+16:42:40: Installing plugin: GL RenderSystem
+16:42:40: OpenGL Rendering Subsystem created.
+16:42:40: Plugin successfully installed
+16:42:40: Loading library .\Plugin_OctreeSceneManager
+16:42:40: Installing plugin: Octree & Terrain Scene Manager
+16:42:40: Plugin successfully installed
+16:42:40: *-*-* OGRE Initialising
+16:42:40: *-*-* Version 1.6.5 (Shoggoth)
+16:42:40: Added resource location '../data/material/scripts' of type 'FileSystem' to resource group 'General'
+16:42:40: Added resource location '../data/mesh' of type 'FileSystem' to resource group 'General'
+16:42:40: Added resource location '../data/terrain/scripts' of type 'FileSystem' to resource group 'General'
+16:42:40: Added resource location '../data/terrain/textures' of type 'FileSystem' to resource group 'General'
+16:42:40: Added resource location '../data/skybox' of type 'FileSystem' to resource group 'General'
+16:42:41: CPU Identifier & Features
+16:42:41: -------------------------
+16:42:41:  *   CPU ID: GenuineIntel: Intel(R) Core(TM)2 Duo CPU     P7550  @ 2.26GHz
+16:42:41:  *      SSE: yes
+16:42:41:  *     SSE2: yes
+16:42:41:  *     SSE3: yes
+16:42:41:  *      MMX: yes
+16:42:41:  *   MMXEXT: yes
+16:42:41:  *    3DNOW: no
+16:42:41:  * 3DNOWEXT: no
+16:42:41:  *     CMOV: yes
+16:42:41:  *      TSC: yes
+16:42:41:  *      FPU: yes
+16:42:41:  *      PRO: yes
+16:42:41:  *       HT: no
+16:42:41: -------------------------
+16:42:41: *** Starting Win32GL Subsystem ***
+16:42:41: GLRenderSystem::_createRenderWindow "OGRE Render Window", 800x600 windowed  miscParams: FSAA=0 colourDepth=32 displayFrequency=0 gamma=false vsync=false 
+16:42:41: Created Win32Window 'OGRE Render Window' : 800x600, 32bpp
+16:42:41: GL_VERSION = 3.1 NVIDIA 188.61
+16:42:41: GL_VENDOR = NVIDIA Corporation
+16:42:41: GL_RENDERER = GeForce 9400M/PCI/SSE2
+16:42:42: GL_EXTENSIONS = GL_ARB_color_buffer_float GL_ARB_copy_buffer GL_ARB_compatibility GL_ARB_depth_buffer_float GL_ARB_depth_texture GL_ARB_draw_buffers GL_ARB_draw_instanced GL_ARB_fragment_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_framebuffer_object GL_ARB_geometry_shader4 GL_ARB_imaging GL_ARB_map_buffer_range GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_pixel_buffer_object GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_shadow GL_ARB_shader_objects GL_ARB_shading_language_100 GL_ARB_texture_border_clamp GL_ARB_texture_buffer_object GL_ARB_texture_compression GL_ARB_texture_cube_map GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_dot3 GL_ARB_texture_float GL_ARB_texture_mirrored_repeat GL_ARB_texture_non_power_of_two GL_ARB_texture_rectangle GL_ARB_texture_rg GL_ARB_transpose_matrix GL_ARB_vertex_array_object GL_ARB_vertex_buffer_object GL_ARB_vertex_program GL_ARB_vertex_shader GL_ARB_window_pos GL_ATI_draw_buffers GL_ATI_texture_float GL_ATI_texture_mirror_once GL_S3_s3tc GL_EXT_texture_env_add GL_EXT_abgr GL_EXT_bgra GL_EXT_blend_color GL_EXT_blend_equation_separate GL_EXT_blend_func_separate GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_compiled_vertex_array GL_EXT_Cg_shader GL_EXT_bindable_uniform GL_EXT_depth_bounds_test GL_EXT_direct_state_access GL_EXT_draw_buffers2 GL_EXT_draw_instanced GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_framebuffer_blit GL_EXT_framebuffer_multisample GL_EXT_framebuffer_object GL_EXTX_framebuffer_mixed_formats GL_EXT_framebuffer_sRGB GL_EXT_geometry_shader4 GL_EXT_gpu_program_parameters GL_EXT_gpu_shader4 GL_EXT_multi_draw_arrays GL_EXT_packed_depth_stencil GL_EXT_packed_float GL_EXT_packed_pixels GL_EXT_pixel_buffer_object GL_EXT_point_parameters GL_EXT_provoking_vertex GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_specular_color GL_EXT_shadow_funcs GL_EXT_stencil_two_side GL_EXT_stencil_wrap GL_EXT_texture3D GL_EXT_texture_array GL_EXT_texture_buffer_object GL_EXT_texture_compression_latc GL_EXT_texture_compression_rgtc GL_EXT_texture_compression_s3tc GL_EXT_texture_cube_map GL_EXT_texture_edge_clamp GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_integer GL_EXT_texture_lod GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_sRGB GL_EXT_texture_swizzle GL_EXT_texture_shared_exponent GL_EXT_timer_query GL_EXT_vertex_array GL_EXT_vertex_array_bgra GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_KTX_buffer_region GL_NV_blend_square GL_NV_copy_depth_to_color GL_NV_depth_buffer_float GL_NV_conditional_render GL_NV_depth_clamp GL_NV_explicit_multisample GL_NV_fence GL_NV_float_buffer GL_NV_fog_distance GL_NV_fragment_program GL_NV_fragment_program_option GL_NV_fragment_program2 GL_NV_framebuffer_multisample_coverage GL_NV_geometry_shader4 GL_NV_gpu_program4 GL_NV_half_float GL_NV_light_max_exponent GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_texgen_reflection GL_NV_texture_compression_vtc GL_NV_texture_env_combine4 GL_NV_texture_expand_normal GL_NV_texture_rectangle GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NVX_conditional_render GL_NV_vertex_buffer_unified_memory GL_NV_shader_buffer_load GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum GL_WIN_swap_hint WGL_EXT_swap_control 
+16:42:42: Supported WGL extensions: WGL_ARB_buffer_region WGL_ARB_extensions_string WGL_ARB_make_current_read WGL_ARB_multisample WGL_ARB_pbuffer WGL_ARB_pixel_format WGL_ARB_pixel_format_float WGL_ARB_render_texture WGL_ATI_pixel_format_float WGL_ARB_create_context WGL_EXT_extensions_string WGL_EXT_framebuffer_sRGB WGL_EXT_pixel_format_packed_float WGL_EXT_swap_control WGL_NV_float_buffer WGL_NV_multisample_coverage WGL_NV_render_depth_texture WGL_NV_render_texture_rectangle 
+16:42:42: ***************************
+16:42:42: *** GL Renderer Started ***
+16:42:42: ***************************
+16:42:42: Registering ResourceManager for type GpuProgram
+16:42:42: GLSL support detected
+16:42:42: GL: Using GL_EXT_framebuffer_object for rendering to textures (best)
+16:42:42: FBO PF_UNKNOWN depth/stencil support: D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_L8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_A8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_A4L4 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_BYTE_LA depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_R5G6B5 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_B5G6R5 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_A1R5G5B5 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_R8G8B8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_B8G8R8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_A8R8G8B8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_B8G8R8A8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_A2R10G10B10 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_A2B10G10R10 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_FLOAT16_RGB depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_FLOAT16_RGBA depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_FLOAT32_RGB depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_FLOAT32_RGBA depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_X8R8G8B8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_X8B8G8R8 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_SHORT_RGBA depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_R3G3B2 depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_FLOAT16_R depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_FLOAT32_R depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:42: FBO PF_FLOAT16_GR depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:43: FBO PF_FLOAT32_GR depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:43: FBO PF_SHORT_RGB depth/stencil support: D0S0 D16S0 D24S0 D32S0 Packed-D24S8 
+16:42:43: [GL] : Valid FBO targets PF_UNKNOWN PF_L8 PF_A8 PF_A4L4 PF_BYTE_LA PF_R5G6B5 PF_B5G6R5 PF_A1R5G5B5 PF_R8G8B8 PF_B8G8R8 PF_A8R8G8B8 PF_B8G8R8A8 PF_A2R10G10B10 PF_A2B10G10R10 PF_FLOAT16_RGB PF_FLOAT16_RGBA PF_FLOAT32_RGB PF_FLOAT32_RGBA PF_X8R8G8B8 PF_X8B8G8R8 PF_SHORT_RGBA PF_R3G3B2 PF_FLOAT16_R PF_FLOAT32_R PF_FLOAT16_GR PF_FLOAT32_GR PF_SHORT_RGB 
+16:42:43: RenderSystem capabilities
+16:42:43: -------------------------
+16:42:43: RenderSystem Name: OpenGL Rendering Subsystem
+16:42:43: GPU Vendor: nvidia
+16:42:43: Device Name: GeForce 9400M/PCI/SSE2
+16:42:43: Driver Version: 3.1.0.0
+16:42:43:  * Fixed function pipeline: yes
+16:42:43:  * Hardware generation of mipmaps: yes
+16:42:43:  * Texture blending: yes
+16:42:43:  * Anisotropic texture filtering: yes
+16:42:43:  * Dot product texture operation: yes
+16:42:43:  * Cube mapping: yes
+16:42:43:  * Hardware stencil buffer: yes
+16:42:43:    - Stencil depth: 8
+16:42:43:    - Two sided stencil support: yes
+16:42:43:    - Wrap stencil values: yes
+16:42:43:  * Hardware vertex / index buffers: yes
+16:42:43:  * Vertex programs: yes
+16:42:43:  * Fragment programs: yes
+16:42:43:  * Geometry programs: yes
+16:42:43:  * Supported Shader Profiles: arbfp1 arbvp1 fp20 fp30 fp40 glsl gp4gp gpu_gp nvgp4 vp30 vp40
+16:42:43:  * Texture Compression: yes
+16:42:43:    - DXT: yes
+16:42:43:    - VTC: yes
+16:42:43:  * Scissor Rectangle: yes
+16:42:43:  * Hardware Occlusion Query: yes
+16:42:43:  * User clip planes: yes
+16:42:43:  * VET_UBYTE4 vertex element type: yes
+16:42:43:  * Infinite far plane projection: yes
+16:42:43:  * Hardware render-to-texture: yes
+16:42:43:  * Floating point textures: yes
+16:42:43:  * Non-power-of-two textures: yes
+16:42:43:  * Volume textures: yes
+16:42:43:  * Multiple Render Targets: 8
+16:42:43:    - With different bit depths: yes
+16:42:43:  * Point Sprites: yes
+16:42:43:  * Extended point parameters: yes
+16:42:43:  * Max Point Size: 63.375
+16:42:43:  * Vertex texture fetch: yes
+16:42:43:    - Max vertex textures: 32
+16:42:43:    - Vertex textures shared: yes
+16:42:43:  * Render to Vertex Buffer : yes
+16:42:43:  * GL 1.5 without VBO workaround: no
+16:42:43:  * Frame Buffer objects: yes
+16:42:43:  * Frame Buffer objects (ARB extension): no
+16:42:43:  * Frame Buffer objects (ATI extension): no
+16:42:43:  * PBuffer suppport: no
+16:42:43:  * GL 1.5 without HW-occlusion workaround: no
+16:42:43: Registering ResourceManager for type Texture
+16:42:43: ResourceBackgroundQueue - threading disabled
+16:42:43: Particle Renderer Type 'billboard' registered
+16:42:43: SceneManagerFactory for type 'OctreeSceneManager' registered.
+16:42:43: SceneManagerFactory for type 'TerrainSceneManager' registered.
+16:42:43: Parsing scripts for resource group Autodetect
+16:42:43: Finished parsing scripts for resource group Autodetect
+16:42:43: Parsing scripts for resource group General
+16:42:43: Parsing script beachBall.material
+16:42:43: Finished parsing scripts for resource group General
+16:42:43: Parsing scripts for resource group Internal
+16:42:43: Finished parsing scripts for resource group Internal
+16:42:43: TerrainSceneManager: Registered a new PageSource for type Heightmap
+16:42:43: TerrainSceneManager: Activated PageSource Heightmap
+16:42:43: Texture: terrain_texture1.jpg: Loading 1 faces(PF_R8G8B8,2048x2048x1) with 11 generated mipmaps from Image. Internal format is PF_X8R8G8B8,2048x2048x1.
+16:42:43: Texture: terrain_detail.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with 8 generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+16:42:43: Texture: stormy_fr.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:43: Texture: stormy_bk.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:43: Texture: stormy_lf.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:43: Texture: stormy_rt.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:43: Texture: stormy_up.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:43: Texture: stormy_dn.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:43: Mesh: Loading jaiqua.mesh.
+16:42:43: Skeleton: Loading jaiqua.skeleton
+16:42:44: Can't assign material jaiqua to SubEntity of 0 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 1 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 2 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 3 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 4 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 5 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 6 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 7 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 8 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 9 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 10 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 11 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 12 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 13 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 14 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 15 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 16 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 17 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 18 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 19 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 20 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 21 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 22 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 23 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 24 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 25 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 26 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 27 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 28 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 29 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 30 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 31 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 32 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 33 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 34 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 35 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 36 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 37 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 38 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 39 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 40 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 41 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 42 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 43 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 44 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 45 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 46 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 47 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 48 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:44: Can't assign material jaiqua to SubEntity of 49 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:57: TerrainSceneManager: Activated PageSource Heightmap
+16:42:58: Texture: terrain_texture2.jpg: Loading 1 faces(PF_R8G8B8,2048x2048x1) with 11 generated mipmaps from Image. Internal format is PF_X8R8G8B8,2048x2048x1.
+16:42:58: Texture: evening_fr.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:58: Texture: evening_bk.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:58: Texture: evening_lf.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:58: Texture: evening_rt.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:58: Texture: evening_up.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:58: Texture: evening_dn.jpg: Loading 1 faces(PF_R8G8B8,512x512x1) with 9 generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+16:42:58: Can't assign material jaiqua to SubEntity of 0 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 1 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 2 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 3 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 4 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 5 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 6 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 7 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 8 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 9 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 10 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 11 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 12 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 13 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 14 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 15 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 16 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:58: Can't assign material jaiqua to SubEntity of 17 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 18 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 19 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 20 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 21 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 22 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 23 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 24 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 25 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 26 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 27 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 28 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 29 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 30 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 31 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 32 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 33 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 34 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 35 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 36 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 37 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 38 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 39 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 40 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 41 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 42 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 43 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 44 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 45 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 46 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 47 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 48 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 49 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 50 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 51 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 52 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 53 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 54 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 55 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 56 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 57 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 58 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 59 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 60 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:42:59: Can't assign material jaiqua to SubEntity of 61 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 62 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 63 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 64 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 65 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 66 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 67 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 68 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 69 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 70 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 71 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 72 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 73 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 74 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 75 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 76 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 77 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 78 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 79 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 80 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 81 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 82 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 83 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 84 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 85 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 86 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 87 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 88 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 89 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 90 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 91 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 92 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 93 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 94 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 95 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 96 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 97 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 98 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 99 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 100 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 101 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 102 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 103 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 104 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:00: Can't assign material jaiqua to SubEntity of 105 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 106 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 107 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 108 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 109 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 110 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 111 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 112 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 113 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 114 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 115 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 116 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 117 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 118 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 119 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 120 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 121 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 122 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 123 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 124 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 125 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 126 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 127 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 128 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 129 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 130 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 131 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 132 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 133 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 134 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 135 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 136 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 137 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 138 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 139 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 140 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 141 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 142 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 143 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 144 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 145 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 146 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 147 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 148 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:01: Can't assign material jaiqua to SubEntity of 149 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 150 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 151 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 152 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 153 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 154 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 155 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 156 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 157 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 158 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 159 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 160 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 161 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 162 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 163 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 164 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 165 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 166 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 167 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 168 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 169 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 170 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 171 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 172 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 173 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 174 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 175 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 176 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 177 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 178 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 179 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 180 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 181 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 182 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 183 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 184 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 185 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 186 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 187 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 188 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 189 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 190 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 191 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 192 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:02: Can't assign material jaiqua to SubEntity of 193 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:03: Can't assign material jaiqua to SubEntity of 194 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:03: Can't assign material jaiqua to SubEntity of 195 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:03: Can't assign material jaiqua to SubEntity of 196 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:03: Can't assign material jaiqua to SubEntity of 197 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:03: Can't assign material jaiqua to SubEntity of 198 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:03: Can't assign material jaiqua to SubEntity of 199 because this Material does not exist. Have you forgotten to define it in a .material script?
+16:43:20: *-*-* OGRE Shutdown
+16:43:20: Unregistering ResourceManager for type Compositor
+16:43:20: Unregistering ResourceManager for type Font
+16:43:20: Unregistering ResourceManager for type Skeleton
+16:43:20: Unregistering ResourceManager for type Mesh
+16:43:20: Unregistering ResourceManager for type HighLevelGpuProgram
+16:43:20: Uninstalling plugin: Octree & Terrain Scene Manager
+16:43:20: Plugin successfully uninstalled
+16:43:20: Unloading library .\Plugin_OctreeSceneManager
+16:43:20: Uninstalling plugin: GL RenderSystem
+16:43:20: Unregistering ResourceManager for type GpuProgram
+16:43:20: *** Stopping Win32GL Subsystem ***
+16:43:20: Unregistering ResourceManager for type Texture
+16:43:20: Plugin successfully uninstalled
+16:43:20: Unloading library .\RenderSystem_GL
+16:43:20: Unregistering ResourceManager for type Material
