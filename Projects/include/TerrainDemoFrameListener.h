@@ -10,11 +10,13 @@
 class TerrainDemo;
 class Level;
 class Enemy;
+class Ship;
 
 class TerrainDemoFrameListener : public Ogre::FrameListener, public OIS::MouseListener, public OIS::KeyListener {
  private:
   static const float ROTATION_INCREMENT;
   static const float TRANSLATION_INCREMENT;
+  static const float FORWARD_VELOCITY;
 
   TerrainDemo*         demo;
   Ogre::RenderWindow*  renderWindow;
@@ -37,6 +39,7 @@ class TerrainDemoFrameListener : public Ogre::FrameListener, public OIS::MouseLi
   bool				   levelKeyPressed;
   bool				   dead;
   int				   enNum;
+  Ogre::Vector3        frameShipPosition;
 
  public:
   TerrainDemoFrameListener(TerrainDemo* demo);

@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "../Enemy.h"
+#include "../Ship.h"
 
 
 
@@ -80,7 +81,7 @@ bool TerrainDemo::setup() {
 	camera = sceneManager->createCamera("PrimaryCamera");
 	camera->setNearClipDistance(1.0f);
 	camera->setFarClipDistance(10000.0f);
-	camera->setPosition(707.0f, 2500.0f, 528.0f);
+	camera->setPosition(707.0f, 300.0f,528.0f);
 
 	// create viewport
 	Ogre::Viewport* vp = renderWindow->addViewport(camera);
@@ -91,12 +92,17 @@ bool TerrainDemo::setup() {
 	terrainRay.setDirection(Ogre::Vector3::NEGATIVE_UNIT_Y);
 
 	raySceneQuery = sceneManager->createRayQuery(terrainRay);
-
+	Ship* ship= new Ship(this);
+	//camera->setAutoTracking(true,sceneManager->getSceneNode("shipNode"),Ogre::Vector3(0.0f,0.0f,0.0f));
+	Ogre::Vector3 hat=ship->getPosition();
+	std::cout <<camera->getPosition() <<std::endl;
+	std::cout << hat << std::endl;
+	ship->setPosition(Ogre::Vector3(hat.x+0.0f,hat.y+0.0f,hat.z-50.0f));
+	std::cout << ship->getPosition() << std::endl;
 	frameListener = new TerrainDemoFrameListener(this);
 
 	root->addFrameListener(frameListener);
 	Level* level = new Level(3,this);
-
 
 
 	return true;

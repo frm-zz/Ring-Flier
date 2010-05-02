@@ -4,138 +4,182 @@
 #include "TerrainDemoFrameListener.h"
 #include "TerrainDemo.h"
 #include "../Enemy.h"
+#include "../Ship.h"
 
 const float TerrainDemoFrameListener::ROTATION_INCREMENT    = 1.5f;
 const float TerrainDemoFrameListener::TRANSLATION_INCREMENT = 30.0f;
+const float TerrainDemoFrameListener::FORWARD_VELOCITY = 100.0f;
 const float gravity = -9.8f;
 float jumpVelocity = 0.0f;
+float roll=0.0f;
+Ogre::Vector3 frameShipPosition;
 int l =0;
 //int enNum=50;
 
 TerrainDemoFrameListener::TerrainDemoFrameListener(TerrainDemo* demo) :
-  demo(demo), renderWindow(demo->getRenderWindow()), camera(demo->getCamera()), cameraTranslate(Ogre::Vector3::ZERO),
-  cameraPitch(0.0f), cameraYaw(1.3f*Ogre::Math::PI), cameraPitchIncrement(0.0f), cameraYawIncrement(0.0f), forwardKeyDown(false),
-  backKeyDown(false), leftKeyDown(false), rightKeyDown(false), shutdownKeyPressed(false), shiftKeyDown(false), spaceKeyPressed(false),
-  levelKeyPressed(false),dead(false),enNum(50){
-  size_t windowHandle;
-  renderWindow->getCustomAttribute("WINDOW", &windowHandle);
+demo(demo), renderWindow(demo->getRenderWindow()), camera(demo->getCamera()), cameraTranslate(Ogre::Vector3::ZERO),
+cameraPitch(0.0f), cameraYaw(1.3f*Ogre::Math::PI), cameraPitchIncrement(0.0f), cameraYawIncrement(0.0f), forwardKeyDown(false),
+backKeyDown(false), leftKeyDown(false), rightKeyDown(false), shutdownKeyPressed(false), shiftKeyDown(false), spaceKeyPressed(false),
+levelKeyPressed(false),dead(false),enNum(50),frameShipPosition(Ogre::Vector3::ZERO){
+	size_t windowHandle;
+	renderWindow->getCustomAttribute("WINDOW", &windowHandle);
 
-  inputManager = OIS::InputManager::createInputSystem(windowHandle);
+	inputManager = OIS::InputManager::createInputSystem(windowHandle);
 
-  mouse = static_cast<OIS::Mouse*>(inputManager->createInputObject(OIS::OISMouse, true));
-  mouse->setEventCallback(this);
-  mouse->capture();
+	mouse = static_cast<OIS::Mouse*>(inputManager->createInputObject(OIS::OISMouse, true));
+	mouse->setEventCallback(this);
+	mouse->capture();
 
-  keyboard = static_cast<OIS::Keyboard*>(inputManager->createInputObject(OIS::OISKeyboard, true));
-  keyboard->setEventCallback(this);
-  keyboard->capture();
+	keyboard = static_cast<OIS::Keyboard*>(inputManager->createInputObject(OIS::OISKeyboard, true));
+	keyboard->setEventCallback(this);
+	keyboard->capture();
+	
 }
-  
+
 TerrainDemoFrameListener::~TerrainDemoFrameListener() {
-  inputManager->destroyInputObject(mouse);
-  inputManager->destroyInputObject(keyboard);
-  OIS::InputManager::destroyInputSystem(inputManager);
+	inputManager->destroyInputObject(mouse);
+	inputManager->destroyInputObject(keyboard);
+	OIS::InputManager::destroyInputSystem(inputManager);
 }
 
 bool TerrainDemoFrameListener::frameStarted(const Ogre::FrameEvent& event) {
-  if (shutdownKeyPressed || renderWindow->isClosed())
-    return false;
+	if (shutdownKeyPressed || renderWindow->isClosed())
+		return false;
 
-  mouse->capture();
-  keyboard->capture();
+	mouse->capture();
+	keyboard->capture();
 
-  float dt = event.timeSinceLastFrame;
-
-  if (cameraPitchIncrement != 0.0f) {
-    cameraPitch -= ROTATION_INCREMENT*dt*cameraPitchIncrement;
+frameShipPosition=demo->ship->getPosition();
+	float dt = event.timeSinceLastFrame;
+	//demo->ship->setPostion(demo->ship->getPostion().x+20.0f*dt,demo->ship->getPostion().y,demo->ship->getPostion().z);
+	/*
+	if (cameraPitchIncrement != 0.0f) {
+	cameraPitch -= ROTATION_INCREMENT*dt*cameraPitchIncrement;
 	//std::cout << cameraPitch << " \n";
-	
+
 	if (cameraPitch < -Ogre::Math::PI/2)
-		cameraPitch= -Ogre::Math::PI/2;
+	cameraPitch= -Ogre::Math::PI/2;
 
 	else if (cameraPitch > Ogre::Math::PI/2)
-		cameraPitch= Ogre::Math::PI/2;
-
-    cameraPitchIncrement = 0.0f;
-  }
-  if (cameraYawIncrement != 0.0f) {
-    cameraYaw -= ROTATION_INCREMENT*dt*cameraYawIncrement;
-
-    cameraYawIncrement = 0.0f;
-  }
-
-  camera->setOrientation(Ogre::Quaternion(Ogre::Radian(cameraYaw), Ogre::Vector3::UNIT_Y)*
-                         Ogre::Quaternion(Ogre::Radian(cameraPitch), Ogre::Vector3::UNIT_X));
-
-   if (!dead){
-  if (forwardKeyDown)
-    cameraTranslate.z = -TRANSLATION_INCREMENT*dt;
-  if (backKeyDown)
-    cameraTranslate.z = TRANSLATION_INCREMENT*dt;
-  if (leftKeyDown)
-    cameraTranslate.x = -TRANSLATION_INCREMENT*dt;
-  if (rightKeyDown)
-    cameraTranslate.x = TRANSLATION_INCREMENT*dt;
-  if (shiftKeyDown){
-	  cameraTranslate*=2;
-  }
-
- 
-  camera->moveRelative(cameraTranslate);
-}
-    //copy of the camera vector
-  Ogre::Vector3 camera2 = camera->getPosition();
-  float height = demo -> getTerrainHeightAt(camera2.x,camera2.z);
-
-  if (spaceKeyPressed && jumpVelocity ==0.0f){
-		jumpVelocity = 10.0f;
-  }
+	cameraPitch= Ogre::Math::PI/2;
 
 
-  if (jumpVelocity != 0.0f){
-	  jumpVelocity += gravity*dt*1.5;
-	  camera2.y+=jumpVelocity/100;
-  }
-    if (camera2.y<=(height+15.0f)){
-	  jumpVelocity = 0.0f;
-  }
+	cameraPitchIncrement = 0.0f;
 
- // std::cout << camera2.x << " " << camera2.y << " " << camera2.z << "\n";
-  if (camera2.x<5)
-	  camera2.x=5;
-  if (camera2.x>1495)
-	  camera2.x=1495;
-  if (camera2.z<5)
-	  camera2.z=5; 
-  if (camera2.z>1495)
-	  camera2.z=1495;
-  camera->setPosition(camera2);
-  cameraTranslate = Ogre::Vector3::ZERO;
-  if (jumpVelocity == 0.0f){
-	 demo->adjustCameraHeightToTerrain();
-  }
-  
-  if (levelKeyPressed){
-	  l=(l+1)%3;
-	  int oldNum=enNum;
-	  //demo->destroyEnemies(enNum);
-	  if (l==0)
-		  enNum=50;
-	  if (l==1)
-		  enNum=100;
-	  if (l==2)
-		  enNum=200;
-	  demo->createNextLevel(l);
-	  dead=false;
-  }
-  int i;
-  for(i=0;i<enNum;i++){
-	  if (!demo->e[i]->update(dt)){
-		  dead=true;
-	  }
-  }
-  
-  return true;
+	}
+	if (cameraYawIncrement != 0.0f) {
+	cameraYaw -= ROTATION_INCREMENT*dt*cameraYawIncrement;
+
+	cameraYawIncrement = 0.0f;
+	}
+	*/
+	// camera->pitch(Ogre::Radian(cameraPitch*dt/100.0f));
+	// camera->yaw(Ogre::Radian(cameraYaw*dt/100.0f));
+	//camera->setOrientation(Ogre::Quaternion(Ogre::Radian(cameraYaw), Ogre::Vector3::UNIT_Y)*
+	//                  Ogre::Quaternion(Ogre::Radian(cameraPitch), Ogre::Vector3::UNIT_X));
+
+	if (!dead){
+		if (forwardKeyDown){
+			//cameraTranslate.z = -TRANSLATION_INCREMENT*dt;
+			cameraPitch-=ROTATION_INCREMENT*dt;
+			camera->pitch(Ogre::Radian(cameraPitch));
+		}
+		else{
+			cameraPitch=0.0f;
+		}
+
+		if (backKeyDown){
+			// cameraTranslate.z = TRANSLATION_INCREMENT*dt;
+			cameraPitch+=ROTATION_INCREMENT*dt;
+			camera->pitch(Ogre::Radian(cameraPitch));
+		}
+		else{
+			cameraPitch=0.0f;
+		}
+		if (leftKeyDown){
+			//  cameraTranslate.x = -TRANSLATION_INCREMENT*dt;
+			roll+=ROTATION_INCREMENT*dt;
+			camera->roll(Ogre::Radian(roll));
+		}
+		else{
+			roll=0.0f;
+		}
+		if (rightKeyDown){
+			roll-=ROTATION_INCREMENT*dt;
+			camera->roll(Ogre::Radian(roll));
+		}else{
+			roll=0.0f;
+		}
+		// cameraTranslate.x = TRANSLATION_INCREMENT*dt;
+	//	if (shiftKeyDown){
+	//		cameraTranslate*=2;
+	//	}
+
+	
+
+
+
+		cameraTranslate.z=-FORWARD_VELOCITY*dt;
+	//std::cout<<frameShipPosition << std::endl;
+		//demo->ship->setPosition(Ogre::Vector3(frameShipPosition.x,frameShipPosition.y,frameShipPosition.z));
+		camera->moveRelative(cameraTranslate);
+	}
+	//copy of the camera vector
+	Ogre::Vector3 camera2 = camera->getPosition();
+	float height = demo -> getTerrainHeightAt(camera2.x,camera2.z);
+	
+	/*
+	if (spaceKeyPressed && jumpVelocity ==0.0f){
+	jumpVelocity = 10.0f;
+	}
+
+
+	if (jumpVelocity != 0.0f){
+	jumpVelocity += gravity*dt*1.5;
+	camera2.y+=jumpVelocity/100;
+	}
+	if (camera2.y<=(height+15.0f)){
+	jumpVelocity = 0.0f;
+	}
+	*/
+	// std::cout << camera2.x << " " << camera2.y << " " << camera2.z << "\n";
+
+	if (camera2.x<5)
+		camera2.x=5;
+	if (camera2.x>4995)
+		camera2.x=4995;
+	if (camera2.z<5)
+		camera2.z=5; 
+	if (camera2.z>4995)
+		camera2.z=4995;
+	camera->setPosition(camera2);
+
+	cameraTranslate = Ogre::Vector3::ZERO;
+
+	if (demo->getTerrainHeightAt(camera->getPosition().x,camera->getPosition().z)+15.0f >= camera->getPosition().y){
+		demo->adjustCameraHeightToTerrain();
+	}
+
+	if (levelKeyPressed){
+		l=(l+1)%3;
+		int oldNum=enNum;
+		if (l==0)
+			enNum=50;
+		if (l==1)
+			enNum=100;
+		if (l==2)
+			enNum=200;
+		demo->createNextLevel(l);
+		dead=false;
+	}
+	int i;
+	for(i=0;i<enNum;i++){
+		if (!demo->e[i]->update(dt)){
+			dead=true;
+		}
+	}
+
+	return true;
 }
 //docs/manual/entities
 //need a scenenode and entity for each sphere
@@ -146,29 +190,29 @@ bool TerrainDemoFrameListener::mousePressed(const OIS::MouseEvent& event, OIS::M
 bool TerrainDemoFrameListener::mouseReleased(const OIS::MouseEvent& event, OIS::MouseButtonID buttonID) { return true; }
 
 bool TerrainDemoFrameListener::mouseMoved(const OIS::MouseEvent& event) {
-  cameraPitchIncrement = event.state.Y.rel;
-  cameraYawIncrement   = event.state.X.rel;
+	cameraPitchIncrement = event.state.Y.rel;
+	cameraYawIncrement   = event.state.X.rel;
 
-  return true;
+	return true;
 }
 
 bool TerrainDemoFrameListener::keyPressed(const OIS::KeyEvent& event) {
-  switch (event.key) {
+	switch (event.key) {
   case OIS::KC_W:
-    forwardKeyDown = true;
-    break;
+	  forwardKeyDown = true;
+	  break;
   case OIS::KC_S:
-    backKeyDown = true;
-    break;
+	  backKeyDown = true;
+	  break;
   case OIS::KC_A:
-    leftKeyDown = true;
-    break;
+	  leftKeyDown = true;
+	  break;
   case OIS::KC_D:
-    rightKeyDown = true;
-    break;
+	  rightKeyDown = true;
+	  break;
   case OIS::KC_ESCAPE:
-    shutdownKeyPressed = true;
-    break;
+	  shutdownKeyPressed = true;
+	  break;
   case OIS::KC_LSHIFT:
 	  shiftKeyDown = true;
 	  break;
@@ -179,35 +223,35 @@ bool TerrainDemoFrameListener::keyPressed(const OIS::KeyEvent& event) {
 	  levelKeyPressed =true;
 	  break;
 
-  }
+	}
 
-  return true;
+	return true;
 }
 
 bool TerrainDemoFrameListener::keyReleased(const OIS::KeyEvent& event) {
-  switch (event.key) {
+	switch (event.key) {
   case OIS::KC_W:
-    forwardKeyDown = false;
-    break;
+	  forwardKeyDown = false;
+	  break;
   case OIS::KC_S:
-    backKeyDown = false;
-    break;
+	  backKeyDown = false;
+	  break;
   case OIS::KC_A:
-    leftKeyDown = false;
-    break;
+	  leftKeyDown = false;
+	  break;
   case OIS::KC_D:
-    rightKeyDown = false;
-    break;
+	  rightKeyDown = false;
+	  break;
   case OIS::KC_LSHIFT:
-	shiftKeyDown = false;
-	break;
+	  shiftKeyDown = false;
+	  break;
   case OIS::KC_SPACE:
-	spaceKeyPressed = false;
-	break;
+	  spaceKeyPressed = false;
+	  break;
   case OIS::KC_F1:
-	levelKeyPressed =false;
-	break;
-  }
+	  levelKeyPressed =false;
+	  break;
+	}
 
-  return true;
+	return true;
 }

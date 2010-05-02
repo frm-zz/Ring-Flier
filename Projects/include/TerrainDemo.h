@@ -9,6 +9,7 @@
 class TerrainDemoFrameListener;
 class Level;
 class Enemy;
+class Ship;
 
 
 class TerrainDemo {
@@ -27,6 +28,7 @@ class TerrainDemo {
 
 
 
+
  public:
   TerrainDemo();
 
@@ -37,6 +39,7 @@ class TerrainDemo {
   Ogre::RenderWindow* getRenderWindow() { return renderWindow; }
   Ogre::Camera*       getCamera()       { return camera; }
   Enemy **e;
+    Ship*						ship;
   float getTerrainHeightAt(float x, float y);
 
   void adjustCameraHeightToTerrain();

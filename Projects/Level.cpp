@@ -12,7 +12,7 @@ Level::Level(int x, TerrainDemo* demo)//:demo(demo)
 		Ogre::Light* light = demo->getSceneManager()->createLight("PrimaryLight");
 		light->setPosition(20.0f, 80.0f, 50.0f);
 		Ogre::ColourValue fogColor(0.93f, 0.86f, 0.76f);
-		demo->getSceneManager()->setFog(Ogre::FOG_LINEAR, fogColor, 0.2, 200.0f, 300.0f);
+		demo->getSceneManager()->setFog(Ogre::FOG_EXP, fogColor, 0.00001f, 20.0f, 300.0f);
 		demo->createEnemies(50);
 	}
 	else if (x==0){
