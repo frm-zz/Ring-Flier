@@ -8,7 +8,7 @@
 
 const float TerrainDemoFrameListener::ROTATION_INCREMENT    = 1.5f;
 const float TerrainDemoFrameListener::TRANSLATION_INCREMENT = 30.0f;
-const float TerrainDemoFrameListener::FORWARD_VELOCITY = 50.0f;
+const float TerrainDemoFrameListener::FORWARD_VELOCITY = 100.0f;
 const float gravity = -9.8f;
 float jumpVelocity = 0.0f;
 float roll=0.0f;

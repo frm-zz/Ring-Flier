@@ -32,7 +32,7 @@ demo->getSceneManager()->getSceneNode(node)->translate(demo->getSceneManager()->
 }
 void Ship::setOrientation(float pitch,float roll){
 	demo->getSceneManager()->getSceneNode(node)->pitch(Ogre::Radian(pitch));
-		demo->getSceneManager()->getSceneNode(node)->roll(Ogre::Radian(roll));
+	demo->getSceneManager()->getSceneNode(node)->roll(Ogre::Radian(roll));
 		//demo->getSceneManager()->getSceneNode(node)->setDirection(Ogre::Vector3(demo->getSceneManager()->getSceneNode(node)->getOrientation().zAxis()),Ogre::Node::TS_LOCAL,Ogre::Vector3::NEGATIVE_UNIT_Z);
 
 	//std::cout << pitch <<" "<<roll<<std::endl;

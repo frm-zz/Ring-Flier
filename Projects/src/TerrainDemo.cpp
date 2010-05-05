@@ -95,12 +95,13 @@ bool TerrainDemo::setup() {
 
 	raySceneQuery = sceneManager->createRayQuery(terrainRay);
 	Ship* ship= new Ship(this);
-	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0));
+
+	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0f));
 	cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
-	Ogre::Entity* test = sceneManager->createEntity("test","sphere.mesh");
-	cameraNode->attachObject(test);
-	cameraNode->scale(Ogre::Vector3(0.1f));
-	cameraNode->setVisible(true);
+	//Ogre::Entity* test = sceneManager->createEntity("test","sphere.mesh");
+	//cameraNode->attachObject(test);
+	//cameraNode->scale(Ogre::Vector3(0.1f));
+	//cameraNode->setVisible(true);
 	//cameraNode->setFixedYawAxis(true);
 	//cameraNode->setInheritOrientation(true);
 	cameraNode->attachObject(camera);
@@ -108,7 +109,7 @@ bool TerrainDemo::setup() {
 
 	//camera->setAutoTracking(true,sceneManager->getSceneNode("shipNode"),Ogre::Vector3(0.0f,0.0f,0.0f));
 
-	Ogre::Vector3 hat=ship->getPosition();
+	//Ogre::Vector3 hat=ship->getPosition();
 	//std::cout <<camera->getPosition() <<std::endl;
 	//std::cout << hat << std::endl;
 	//ship->setPosition(Ogre::Vector3(hat.x+0.0f,hat.y+0.0f,hat.z-50.0f));
