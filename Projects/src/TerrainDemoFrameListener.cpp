@@ -17,8 +17,8 @@ int l =0;
 //int enNum=50;
 
 TerrainDemoFrameListener::TerrainDemoFrameListener(TerrainDemo* demo,Ship* ship) :
-demo(demo), renderWindow(demo->getRenderWindow()), camera(demo->getCamera()), cameraTranslate(Ogre::Vector3::ZERO),
-cameraPitch(0.0f), cameraYaw(1.3f*Ogre::Math::PI), cameraPitchIncrement(0.0f), cameraYawIncrement(0.0f), forwardKeyDown(false),
+demo(demo), renderWindow(demo->getRenderWindow()), camera(demo->getCamera()), cameraTranslate(Ogre::Vector3::ZERO)/*,
+cameraPitch(0.0f), cameraYaw(1.3f*Ogre::Math::PI)*/, cameraPitchIncrement(0.0f), cameraYawIncrement(0.0f), forwardKeyDown(false),
 backKeyDown(false), leftKeyDown(false), rightKeyDown(false), shutdownKeyPressed(false), shiftKeyDown(false), spaceKeyPressed(false),
 levelKeyPressed(false),dead(false),enNum(50),frameShipPosition(Ogre::Vector3::ZERO),ship(ship){
 	size_t windowHandle;
@@ -81,7 +81,7 @@ bool TerrainDemoFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 	if (!dead){
 		if (forwardKeyDown){
 			//cameraTranslate.z = -TRANSLATION_INCREMENT*dt;
-			cameraPitch-=ROTATION_INCREMENT*dt;
+			cameraPitch+=ROTATION_INCREMENT*dt;
 			//camera->pitch(Ogre::Radian(cameraPitch));
 			ship->setOrientation(cameraPitch,roll);
 		}
@@ -91,7 +91,7 @@ bool TerrainDemoFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 
 		if (backKeyDown){
 			// cameraTranslate.z = TRANSLATION_INCREMENT*dt;
-			cameraPitch+=ROTATION_INCREMENT*dt;
+			cameraPitch-=ROTATION_INCREMENT*dt;
 			//camera->pitch(Ogre::Radian(cameraPitch));
 			ship->setOrientation(cameraPitch,roll);
 		}
@@ -100,7 +100,7 @@ bool TerrainDemoFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 		}
 		if (leftKeyDown){
 			//  cameraTranslate.x = -TRANSLATION_INCREMENT*dt;
-			roll+=ROTATION_INCREMENT*dt;
+			roll-=ROTATION_INCREMENT*dt;
 			//camera->roll(Ogre::Radian(roll));
 			ship->setOrientation(cameraPitch,roll);
 		}
@@ -108,7 +108,7 @@ bool TerrainDemoFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 			roll=0.0f;
 		}
 		if (rightKeyDown){
-			roll-=ROTATION_INCREMENT*dt;
+			roll+=ROTATION_INCREMENT*dt;
 			//camera->roll(Ogre::Radian(roll));
 			ship->setOrientation(cameraPitch,roll);
 		}else{
@@ -123,12 +123,12 @@ bool TerrainDemoFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 
 
 
-		cameraTranslate.z=-FORWARD_VELOCITY*dt;
+	//	cameraTranslate.z=-FORWARD_VELOCITY*dt;
 		//cameraTranslate.z=-10*dt;
 		frameShipPosition=ship->getPosition();
 		//std::cout<<frameShipPosition << std::endl;
 		
-		std::cout<<ship->getPosition()<<std::endl;
+		//std::cout<<ship->getPosition()<<std::endl;
 		//ship->setPosition(Ogre::Vector3(frameShipPosition.x,frameShipPosition.y,frameShipPosition.z-FORWARD_VELOCITY*dt));
 		ship->setPosition(Ogre::Vector3(0.0f,0.0f,FORWARD_VELOCITY*dt));
 		//demo->getSceneManager()->getSceneNode("cameraNode")->translate(camera->getPosition()-demo->getSceneManager()->getSceneNode("cameraNode")->getPosition()*0.1f);
@@ -164,10 +164,10 @@ bool TerrainDemoFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 		camera2.z=4995;
 	//camera->setPosition(camera2);
 
-	cameraTranslate = Ogre::Vector3::ZERO;
+	//cameraTranslate = Ogre::Vector3::ZERO;
 
 	if (demo->getTerrainHeightAt(camera->getPosition().x,camera->getPosition().z)+15.0f >= camera->getPosition().y){
-		demo->adjustCameraHeightToTerrain();
+		//demo->adjustCameraHeightToTerrain();
 	}
 
 	if (levelKeyPressed){

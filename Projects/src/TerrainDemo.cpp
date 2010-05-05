@@ -13,7 +13,7 @@
 
 
 TerrainDemo::TerrainDemo() : root(new Ogre::Root()), frameListener(NULL), raySceneQuery(NULL) {
-//Ship* ship = new Ship(this);
+	//Ship* ship = new Ship(this);
 	//cameraNode= sceneManager->getRootSceneNode()->createChildSceneNode("cameraNode");
 
 }
@@ -31,8 +31,8 @@ float TerrainDemo::getTerrainHeightAt(float x, float z) {
 	terrainRay.setOrigin(Ogre::Vector3(x, 1000.0f, z));
 	raySceneQuery->setRay(terrainRay);
 
-	Ogre::RaySceneQueryResult&          queryResult = raySceneQuery->execute();
-	Ogre::RaySceneQueryResult::iterator qi          = queryResult.begin();
+	Ogre::RaySceneQueryResult& queryResult = raySceneQuery->execute();
+	Ogre::RaySceneQueryResult::iterator qi  = queryResult.begin();
 	return (qi != queryResult.end() && qi->worldFragment) ? qi->worldFragment->singleIntersection.y : 0.0f;
 }
 
@@ -83,7 +83,7 @@ bool TerrainDemo::setup() {
 	camera = sceneManager->createCamera("PrimaryCamera");
 	camera->setNearClipDistance(1.0f);
 	camera->setFarClipDistance(10000.0f);
-	camera->setPosition(707.0f, 300.0f,528.0f);
+	//camera->setPosition(707.0f, 300.0f,528.0f);
 
 	// create viewport
 	Ogre::Viewport* vp = renderWindow->addViewport(camera);
@@ -95,14 +95,19 @@ bool TerrainDemo::setup() {
 
 	raySceneQuery = sceneManager->createRayQuery(terrainRay);
 	Ship* ship= new Ship(this);
-	//cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode");
-	//cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
+	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0));
+	cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
+	Ogre::Entity* test = sceneManager->createEntity("test","sphere.mesh");
+	cameraNode->attachObject(test);
+	cameraNode->scale(Ogre::Vector3(0.1f));
+	cameraNode->setVisible(true);
 	//cameraNode->setFixedYawAxis(true);
-	//cameraNode->attachObject(camera);
+	//cameraNode->setInheritOrientation(true);
+	cameraNode->attachObject(camera);
 	//cameraNode->setPosition(camera->getPosition());
 
-	camera->setAutoTracking(true,sceneManager->getSceneNode("shipNode"),Ogre::Vector3(0.0f,0.0f,0.0f));
-	
+	//camera->setAutoTracking(true,sceneManager->getSceneNode("shipNode"),Ogre::Vector3(0.0f,0.0f,0.0f));
+
 	Ogre::Vector3 hat=ship->getPosition();
 	//std::cout <<camera->getPosition() <<std::endl;
 	//std::cout << hat << std::endl;

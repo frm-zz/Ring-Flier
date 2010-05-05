@@ -11,10 +11,12 @@ Ship::Ship(TerrainDemo* demo):demo(demo)
 	Ogre::SceneNode* shipNode = demo->getSceneManager()->getRootSceneNode()->createChildSceneNode(node);
 		Ogre::Entity* shipEnt = demo->getSceneManager()->createEntity("shipEnt","razor.mesh");
 		shipEnt->setMaterialName("RZR-002");
+		
 		shipNode->attachObject(shipEnt);
-		shipNode->setPosition(shipPosition);
-		shipNode->scale(0.5f,0.5f,0.5f);
+		shipNode->setPosition(Ogre::Vector3(1200.0f,600.0f,1200.0f));
+		shipNode->scale(0.05f,0.05f,0.05f);
 		shipNode->setVisible(true);
+		
 		//shipNode->setInheritOrientation(false);
 		//shipNode->setOrientation(demo->getCamera()->getOrientation());
 		

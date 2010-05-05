@@ -53,7 +53,7 @@ void Enemy::moveTowards(const Ogre::Vector3 pos, float velocity, float elapsedTi
 }
 
 bool Enemy::update(float elapsedTime){
-	if (Enemy::inRange(demo->getCamera()->getPosition(),Enemy::ACTIVATION_RADIUS)){
+	if (Enemy::inRange(demo->getSceneManager()->getSceneNode("shipNode")->getPosition(),Enemy::ACTIVATION_RADIUS)){
 		//Enemy::moveTowards(demo->getCamera()->getPosition(),Enemy::CHASE_VELOCITY,elapsedTime);
 		//Enemy::chaseTime=Enemy::RELAX_TIME;
 		demo->getSceneManager()->getEntity(sphereName)->setMaterialName("Active_Sphere");
@@ -66,7 +66,7 @@ bool Enemy::update(float elapsedTime){
 	else{
 		//demo->getSceneManager()->getEntity(sphereName)->setMaterialName("Inactive_Sphere");
 	}
-	if (Enemy::inRange(demo->getCamera()->getPosition(),Enemy::KILL_RADIUS)){
+	if (Enemy::inRange(demo->getSceneManager()->getSceneNode("shipNode")->getPosition(),Enemy::KILL_RADIUS)){
 		//return false;
 	}
 	return true;
