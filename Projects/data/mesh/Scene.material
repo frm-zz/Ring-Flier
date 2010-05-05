@@ -1,0 +1,266 @@
+material AXIS.7 black 0
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.021569 0.021569 0.021569 1.000000
+			diffuse 0.034510 0.034510 0.034510 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.6 white 1
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material PART.2 very dar
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.000000 0.000000 0.000000 1.000000
+			diffuse 0.000000 0.000000 0.000000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.1 STRONG R
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.000000 0.000000 0.000000 1.000000
+			diffuse 0.000000 0.000000 0.000000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.14 white 7
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.10 white 4
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS white 2
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.11 black 3
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.021569 0.021569 0.021569 1.000000
+			diffuse 0.034510 0.034510 0.034510 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.2 STRONG R
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.000000 0.000000 0.000000 1.000000
+			diffuse 0.000000 0.000000 0.000000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.12 white 9
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.15 black 6
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.021569 0.021569 0.021569 1.000000
+			diffuse 0.034510 0.034510 0.034510 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.3 RED 15
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.000000 0.000000 0.000000 1.000000
+			diffuse 0.000000 0.000000 0.000000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material PART.3 RED 18
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.000000 0.000000 0.000000 1.000000
+			diffuse 0.000000 0.000000 0.000000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.5 white 11
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.9 white 5
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material PART.4 DARK GRA
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.131373 0.133333 0.150980 1.000000
+			diffuse 0.210196 0.213333 0.241569 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.13 white 8
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.8 white 10
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.500000 0.500000 0.500000 1.000000
+			diffuse 0.800000 0.800000 0.800000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}
+material AXIS.4 STRONG R
+{
+	receive_shadows on
+	technique
+	{
+		pass
+		{
+			ambient 0.000000 0.000000 0.000000 1.000000
+			diffuse 0.000000 0.000000 0.000000 1.000000
+			specular 0.500000 0.500000 0.500000 1.000000 12.500000
+			emissive 0.000000 0.000000 0.000000 1.000000
+		}
+	}
+}

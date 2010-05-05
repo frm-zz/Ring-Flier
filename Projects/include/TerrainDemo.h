@@ -40,6 +40,7 @@ class TerrainDemo {
   Ogre::Camera*       getCamera()       { return camera; }
   Enemy **e;
     Ship*						ship;
+	Ogre::SceneNode *cameraNode;
   float getTerrainHeightAt(float x, float y);
 
   void adjustCameraHeightToTerrain();
@@ -49,6 +50,8 @@ class TerrainDemo {
   void createEnemies(int n);
 
   void destroyEnemies(int n);
+
+  Ogre::Vector3 getShipPosition();
 
   void init();
 

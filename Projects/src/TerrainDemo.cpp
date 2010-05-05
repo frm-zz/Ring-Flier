@@ -13,6 +13,8 @@
 
 
 TerrainDemo::TerrainDemo() : root(new Ogre::Root()), frameListener(NULL), raySceneQuery(NULL) {
+//Ship* ship = new Ship(this);
+	//cameraNode= sceneManager->getRootSceneNode()->createChildSceneNode("cameraNode");
 
 }
 
@@ -93,13 +95,20 @@ bool TerrainDemo::setup() {
 
 	raySceneQuery = sceneManager->createRayQuery(terrainRay);
 	Ship* ship= new Ship(this);
-	//camera->setAutoTracking(true,sceneManager->getSceneNode("shipNode"),Ogre::Vector3(0.0f,0.0f,0.0f));
+	//cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode");
+	//cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
+	//cameraNode->setFixedYawAxis(true);
+	//cameraNode->attachObject(camera);
+	//cameraNode->setPosition(camera->getPosition());
+
+	camera->setAutoTracking(true,sceneManager->getSceneNode("shipNode"),Ogre::Vector3(0.0f,0.0f,0.0f));
+	
 	Ogre::Vector3 hat=ship->getPosition();
-	std::cout <<camera->getPosition() <<std::endl;
-	std::cout << hat << std::endl;
-	ship->setPosition(Ogre::Vector3(hat.x+0.0f,hat.y+0.0f,hat.z-50.0f));
-	std::cout << ship->getPosition() << std::endl;
-	frameListener = new TerrainDemoFrameListener(this);
+	//std::cout <<camera->getPosition() <<std::endl;
+	//std::cout << hat << std::endl;
+	//ship->setPosition(Ogre::Vector3(hat.x+0.0f,hat.y+0.0f,hat.z-50.0f));
+	//std::cout << ship->getPosition() << std::endl;
+	frameListener = new TerrainDemoFrameListener(this,ship);
 
 	root->addFrameListener(frameListener);
 	Level* level = new Level(3,this);
@@ -131,4 +140,7 @@ void TerrainDemo::createNextLevel(int x){
 
 	camera->setPosition(707.0f, getTerrainHeightAt(707.0f,528.0f), 528.0f);
 
+}
+Ogre::Vector3 TerrainDemo::getShipPosition(){
+	return TerrainDemo::ship->getPosition();
 }

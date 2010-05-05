@@ -15,6 +15,8 @@ public:
 	~Ship(void);
 	void setPosition(Ogre::Vector3 position);
 	Ogre::Vector3 getPosition();
+	void setOrientation(float pitch, float roll);
+	Ogre::Vector3 getOrientation();
 
 };
 #endif;

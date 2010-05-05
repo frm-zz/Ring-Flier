@@ -5,7 +5,7 @@
 const float Enemy::CHASE_VELOCITY=0.50f;
 const float Enemy::ACTIVATION_RADIUS=10.0f;
 const float Enemy::RELAX_TIME=3;
-const float Enemy::KILL_RADIUS=10.0f;
+const float Enemy::KILL_RADIUS=20.0f;
 Enemy::Enemy(Ogre::String name, TerrainDemo* demo):demo(demo)
 {
 	position.x=(rand()%5000);

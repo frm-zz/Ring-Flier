@@ -40,9 +40,9 @@ class TerrainDemoFrameListener : public Ogre::FrameListener, public OIS::MouseLi
   bool				   dead;
   int				   enNum;
   Ogre::Vector3        frameShipPosition;
-
+  Ship*				   ship;
  public:
-  TerrainDemoFrameListener(TerrainDemo* demo);
+  TerrainDemoFrameListener(TerrainDemo* demo, Ship* ship);
 
   ~TerrainDemoFrameListener();
 
