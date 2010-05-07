@@ -15,10 +15,10 @@ Enemy::Enemy(Ogre::String name, TerrainDemo* demo):demo(demo)
 	position.y=(rand()%500)+demo->getTerrainHeightAt(position.x,position.z);
 
 	Ogre::SceneNode* sn = demo->getSceneManager()->getRootSceneNode()->createChildSceneNode("sn"+name);
-		Ogre::Entity* enemy = demo->getSceneManager()->createEntity(name,"sphere.mesh");
+		Ogre::Entity* enemy = demo->getSceneManager()->createEntity(name,"Torus.mesh");
 		enemy->setMaterialName("Inactive_Sphere");
 		sn->attachObject(enemy);
-		sn->scale(Ogre::Vector3(0.10f,0.10f,0.10f));
+		sn->scale(Ogre::Vector3(015.10f,015.10f,015.10f));
 		sn->setPosition(position);
 		sn->setVisible(true);
 		sn->setOrientation(Ogre::Quaternion(Ogre::Radian(30.0f), Ogre::Vector3::UNIT_Z));
