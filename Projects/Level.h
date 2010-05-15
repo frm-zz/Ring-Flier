@@ -3,7 +3,7 @@
 #ifndef __LEVEL_H__
 #define __LEVEL_H__
 #include "Ogre.h"
-class TerrainDemo;
+class RingFlyer;
 class Level
 {
 
@@ -13,7 +13,7 @@ private:
 	
 	
 public:
-	Level(int x,TerrainDemo* demo);
+	Level(int x,RingFlyer* flyer);
 	~Level(void);
 
 
