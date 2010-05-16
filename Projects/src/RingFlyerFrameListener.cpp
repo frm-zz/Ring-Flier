@@ -169,7 +169,11 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 	//camera->setPosition(camera2);
 
 	//cameraTranslate = Ogre::Vector3::ZERO;
-
+//frameShipPosition=ship->getPosition();
+//if(frameShipPosition.y< flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+20.0){
+//	ship->setPosition(Ogre::Vector3(0.0f,flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+20.0,0.0f));
+//	
+//}
 	if (flyer->getTerrainHeightAt(camera->getPosition().x,camera->getPosition().z)+15.0f >= camera->getPosition().y){
 		//flyer->adjustCameraHeightToTerrain();
 	}
@@ -183,7 +187,7 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 			enNum=100;
 		if (l==2)
 			enNum=200;
-		flyer->createNextLevel(l);
+		flyer->createNextLevel(4);
 		dead=false;
 	}
 	int i;

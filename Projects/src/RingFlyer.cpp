@@ -9,7 +9,8 @@
 #include <time.h>
 #include "../Ring.h"
 #include "../Ship.h"
-
+//#include <OgreTextAreaOverlayElement.h>
+//#include <OgreFontManager.h>
 
 
 RingFlyer::RingFlyer() : root(new Ogre::Root()), frameListener(NULL), raySceneQuery(NULL) {
@@ -73,7 +74,7 @@ bool RingFlyer::setup() {
 
 	// craete scene manager
 	sceneManager = root->createSceneManager("TerrainSceneManager");
-
+	
 	Ogre::ColourValue fogColor(0.93f, 0.86f, 0.76f);
 	sceneManager->setFog(Ogre::FOG_LINEAR, fogColor, 0.2, 100.0f, 200.0f);
 
@@ -98,13 +99,14 @@ bool RingFlyer::setup() {
 
 	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0f));
 	cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
+	cameraNode->attachObject(camera);
 	//Ogre::Entity* test = sceneManager->createEntity("test","sphere.mesh");
 	//cameraNode->attachObject(test);
 	//cameraNode->scale(Ogre::Vector3(0.1f));
 	//cameraNode->setVisible(true);
 	//cameraNode->setFixedYawAxis(true);
 	//cameraNode->setInheritOrientation(true);
-	cameraNode->attachObject(camera);
+	
 	//cameraNode->setPosition(camera->getPosition());
 
 	//camera->setAutoTracking(true,sceneManager->getSceneNode("shipNode"),Ogre::Vector3(0.0f,0.0f,0.0f));
@@ -119,7 +121,6 @@ bool RingFlyer::setup() {
 	root->addFrameListener(frameListener);
 	Level* level = new Level(3,this);
 
-
 	return true;
 }
 void RingFlyer::createRings(int n){
@@ -132,18 +133,28 @@ void RingFlyer::createRings(int n){
 void RingFlyer::destroyRings(int n){
 	int i;
 	for (i=0;i<n;i++){
-		e[i]->~Ring();
+		delete e[i];
+		//e[i]->~Ring();
 	}
 }
 
 
 void RingFlyer::createNextLevel(int x){
+	std::cout << "here!!!!"<< std::endl;
+	//delete level;
+	std::cout << "here!!!!"<< std::endl;
 	level->~Level();
+	std::cout << "here!!!!"<< std::endl;
 	sceneManager->clearScene();
 
 	sceneManager->destroyAllEntities();
-	Level* level = new Level(x,this);
+		//Ship* ship= new Ship(this);
 
+	//cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0f));
+	//cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
+	//cameraNode->attachObject(camera);
+	Level* level = new Level(3,this);
+	std::cout << "here!!!!"<< std::endl;
 	camera->setPosition(707.0f, getTerrainHeightAt(707.0f,528.0f), 528.0f);
 
 }

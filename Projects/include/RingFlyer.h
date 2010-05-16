@@ -24,7 +24,7 @@ class RingFlyer {
   Ogre::RaySceneQuery*      raySceneQuery;
   Ogre::Ray                 terrainRay;
   Level*					level;
-
+  //Ogre::Overlay*     mPanelOverlay;
 
 
 

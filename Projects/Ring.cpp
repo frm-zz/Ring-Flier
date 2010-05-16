@@ -12,7 +12,7 @@ Ring::Ring(Ogre::String name, RingFlyer* flyer):flyer(flyer)
 	
 	position.z=(rand()%5000);
 	//position.y=flyer->getTerrainHeightAt(position.x,position.z)+15.0f;
-	position.y=(rand()%500)+flyer->getTerrainHeightAt(position.x,position.z);
+	position.y=(rand()%500)+flyer->getTerrainHeightAt(position.x,position.z)+100.0f;
 
 	Ogre::SceneNode* sn = flyer->getSceneManager()->getRootSceneNode()->createChildSceneNode("sn"+name);
 		Ogre::Entity* ring = flyer->getSceneManager()->createEntity(name,"Torus.mesh");
@@ -22,12 +22,14 @@ Ring::Ring(Ogre::String name, RingFlyer* flyer):flyer(flyer)
 		sn->setPosition(position);
 		sn->setVisible(true);
 		sn->setOrientation(Ogre::Quaternion(Ogre::Radian(30.0f), Ogre::Vector3::UNIT_Z));
+		sn->setDirection(rand()%10,rand()%10,rand()%10,Ogre::Node::TransformSpace::TS_LOCAL,Ogre::Vector3::NEGATIVE_UNIT_Z);
 		sphereName=name;
 		chaseTime=0.0;
 }
 
 Ring::~Ring(void)
 {
+	delete this;
 }
 Ogre::Vector3 position;
 

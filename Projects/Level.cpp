@@ -53,6 +53,7 @@ Level::Level(int x, RingFlyer* flyer)//:flyer(flyer)
 
 Level::~Level(void)
 {
+	//delete this;
 }
 
 Ogre::String currentLevel;
