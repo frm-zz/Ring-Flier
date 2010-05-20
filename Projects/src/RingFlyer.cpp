@@ -1,5 +1,5 @@
 // RingFlyer.cpp
-// @author Eric D. Wills
+
 
 #include "../Level.h"
 #include "RingFlyer.h"
@@ -126,36 +126,63 @@ bool RingFlyer::setup() {
 void RingFlyer::createRings(int n){
 	int i;
 	e=new Ring*[n];
+	//std::cout << "e=new Ring*[n]; "<< std::endl;
 	for (i=0;i<n;i++){
+		//std::cout << "trying to make a ring "<< std::endl;
 		e[i]=new Ring(Ogre::StringConverter::toString(i),this);
+		//std::cout << "made a ring "<< std::endl;
 	}
 }
 void RingFlyer::destroyRings(int n){
 	int i;
+	//std::cout << "inside destroyRings"<< std::endl;
 	for (i=0;i<n;i++){
-		delete e[i];
+		sceneManager->getRootSceneNode()->removeAndDestroyChild("sn" + Ogre::StringConverter::toString(i));
+		//delete e[i];
 		//e[i]->~Ring();
 	}
+	std::cout << "inside destroyRings"<< std::endl;
 }
 
 
 void RingFlyer::createNextLevel(int x){
-	std::cout << "here!!!!"<< std::endl;
+	//std::cout << "here1!!!!"<< std::endl;
 	//delete level;
-	std::cout << "here!!!!"<< std::endl;
-	level->~Level();
-	std::cout << "here!!!!"<< std::endl;
-	sceneManager->clearScene();
+	//std::cout << "here2!!!!"<< std::endl;
+	//level->~Level();
+	//std::cout << "here!!!!"<< std::endl;
+	//sceneManager->clearScene();
 
+	//sceneManager->getSceneNode("shipNode")->
 	sceneManager->destroyAllEntities();
 		//Ship* ship= new Ship(this);
-
+	//destroyRings(50);
+	//std::cout << "after destroyAllEnts"<< std::endl;
 	//cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0f));
 	//cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
 	//cameraNode->attachObject(camera);
-	Level* level = new Level(3,this);
-	std::cout << "here!!!!"<< std::endl;
-	camera->setPosition(707.0f, getTerrainHeightAt(707.0f,528.0f), 528.0f);
+	Level* level = new Level(x,this);
+	//std::cout << "here3!!!!"<< std::endl;
+	//camera->setPosition(707.0f, getTerrainHeightAt(707.0f,528.0f), 528.0f);
+	//std::cout << "setCameraPos"<< std::endl;
+
+	sceneManager->getRootSceneNode()->removeAndDestroyChild("shipNode");
+	delete ship;
+	//std::cout << "deleted ship"<< std::endl;
+	Ship* ship= new Ship(this);
+	//std::cout << "made a new ship"<< std::endl;
+	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0f));
+	//std::cout << "make a camera node"<< std::endl;
+	cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
+	//std::cout << "autotrack"<< std::endl;
+	cameraNode->attachObject(camera);
+	//std::cout << "attached"<< std::endl;
+
+	/*delete frameListener;
+	frameListener = new RingFlyerFrameListener(this,ship); //this was a quick fix...could not delete and then just make a setShip() or something
+
+	root->addFrameListener(frameListener);*/
+	frameListener->setShip(ship);
 
 }
 Ogre::Vector3 RingFlyer::getShipPosition(){

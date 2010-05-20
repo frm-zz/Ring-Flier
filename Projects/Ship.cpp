@@ -16,12 +16,17 @@ Ship::Ship(RingFlyer* flyer):flyer(flyer)
 		shipNode->setVisible(true);
 		shipNode->showBoundingBox(true);
 		//shipNode->setInheritOrientation(false);
-		shipNode->setOrientation(Ogre::Quaternion(Ogre::Radian(Ogre::Degree(-90)),Ogre::Vector3::UNIT_X));
+		//shipNode->setOrientation(Ogre::Quaternion(Ogre::Radian(Ogre::Degree(-90)),Ogre::Vector3::UNIT_X));
 		
 }
 Ogre::Vector3 shipPosition;
 Ship::~Ship(void)
 {
+	/*std::cout << "deconstructor"<< std::endl;
+	flyer->getSceneManager()->getRootSceneNode()->removeAndDestroyChild("shipNode");
+	std::cout << "destroyed shipNode"<< std::endl;
+	flyer->getSceneManager()->destroyEntity("shipEnt");
+	std::cout << "destroyed shipEnt"<< std::endl;*/
 }
 void Ship::setPosition(Ogre::Vector3 position){
 shipPosition=position;

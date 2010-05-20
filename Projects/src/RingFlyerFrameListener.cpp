@@ -1,5 +1,5 @@
 // RingFlyerFrameListener.cpp
-// @author Eric D. Wills
+
 
 #include "RingFlyerFrameListener.h"
 #include "RingFlyer.h"
@@ -8,19 +8,20 @@
 
 const float RingFlyerFrameListener::ROTATION_INCREMENT    = 1.5f;
 const float RingFlyerFrameListener::TRANSLATION_INCREMENT = 30.0f;
-const float RingFlyerFrameListener::FORWARD_VELOCITY = 120.0f;
+float RingFlyerFrameListener::FORWARD_VELOCITY = 120.0f;
 const float gravity = -9.8f;
 float jumpVelocity = 0.0f;
 float roll=0.0f;
 Ogre::Vector3 frameShipPosition;
 int l =0;
+float timeLeft=100.0f;
+int score=0;
 //int enNum=50;
 
 RingFlyerFrameListener::RingFlyerFrameListener(RingFlyer* flyer,Ship* ship) :
-flyer(flyer), renderWindow(flyer->getRenderWindow()), camera(flyer->getCamera()), cameraTranslate(Ogre::Vector3::ZERO)/*,
-cameraPitch(0.0f), cameraYaw(1.3f*Ogre::Math::PI)*/, cameraPitchIncrement(0.0f), cameraYawIncrement(0.0f), forwardKeyDown(false),
+flyer(flyer), renderWindow(flyer->getRenderWindow()), camera(flyer->getCamera()), cameraTranslate(Ogre::Vector3::ZERO), cameraPitchIncrement(0.0f), cameraYawIncrement(0.0f), forwardKeyDown(false),
 backKeyDown(false), leftKeyDown(false), rightKeyDown(false), shutdownKeyPressed(false), shiftKeyDown(false), spaceKeyPressed(false),
-levelKeyPressed(false),dead(false),enNum(50),frameShipPosition(Ogre::Vector3::ZERO),ship(ship){
+levelKeyPressed(false),incSpeedKeyDown(false),decSpeedKeyDown(false),maxSpeedKeyDown(false),dead(false),enNum(50),frameShipPosition(Ogre::Vector3::ZERO),ship(ship){
 	size_t windowHandle;
 	renderWindow->getCustomAttribute("WINDOW", &windowHandle);
 
@@ -33,13 +34,18 @@ levelKeyPressed(false),dead(false),enNum(50),frameShipPosition(Ogre::Vector3::ZE
 	keyboard = static_cast<OIS::Keyboard*>(inputManager->createInputObject(OIS::OISKeyboard, true));
 	keyboard->setEventCallback(this);
 	keyboard->capture();
-	
+	showTimeOverlay(true);
+	showScoreOverlay(true);
+	updateScore(score);
 }
 
 RingFlyerFrameListener::~RingFlyerFrameListener() {
 	inputManager->destroyInputObject(mouse);
 	inputManager->destroyInputObject(keyboard);
 	OIS::InputManager::destroyInputSystem(inputManager);
+}
+void RingFlyerFrameListener::setShip(Ship* ship){
+	this->ship = ship;
 }
 
 bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
@@ -48,9 +54,30 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 
 	mouse->capture();
 	keyboard->capture();
+	float t2;
 
 
 	float dt = event.timeSinceLastFrame;
+	if (dead){
+		//t2=0.0f;
+		flyer->getSceneManager()->setFog(Ogre::FOG_LINEAR, Ogre::ColourValue(0.93f, 0.0f, 0.0f),0.001f,5.0f,100.0f);
+		//updateTime(t2);
+	}
+
+	if (!dead){
+		timeLeft-=dt;
+		t2=timeLeft*100.0f;
+		int t=t2;
+		t2=t/100.0f;
+		updateTime(t2);
+	}
+	if(timeLeft<=0.0f){
+
+		dead=true;
+
+	}
+	
+
 	//flyer->ship->setPostion(flyer->ship->getPostion().x+20.0f*dt,flyer->ship->getPostion().y,flyer->ship->getPostion().z);
 	/*
 	if (cameraPitchIncrement != 0.0f) {
@@ -96,7 +123,7 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 			//ship->setOrientation(cameraPitch,roll);
 		}
 		//else{
-			//cameraPitch=0.0f;
+		//cameraPitch=0.0f;
 		//}
 		if (leftKeyDown){
 			//  cameraTranslate.x = -TRANSLATION_INCREMENT*dt;
@@ -105,43 +132,47 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 			//ship->setOrientation(cameraPitch,roll);
 		}
 		//else{
-			//roll=0.0f;
+		//roll=0.0f;
 		//}
-		 if (rightKeyDown){
+		if (rightKeyDown){
 			roll+=ROTATION_INCREMENT*dt;
 			//camera->roll(Ogre::Radian(roll));
 			//ship->setOrientation(cameraPitch,roll);
 		}
-		 ship->setOrientation(cameraPitch,roll);
+		ship->setOrientation(cameraPitch,roll);
 		//else{
-			//roll=0.0f;
+		//roll=0.0f;
 		//}
-		 cameraPitch=0.0f;
-		roll=0.0f;
+		if (!dead){
+			cameraPitch=0.0f;
+			roll=0.0f;
+			frameShipPosition=ship->getPosition();
+			ship->setPosition(Ogre::Vector3(0.0f,0.0f,FORWARD_VELOCITY*dt));
+		}
 		// cameraTranslate.x = TRANSLATION_INCREMENT*dt;
-	//	if (shiftKeyDown){
-	//		cameraTranslate*=2;
-	//	}
-
-	
+		//	if (shiftKeyDown){
+		//		cameraTranslate*=2;
+		//	}
 
 
 
-	//	cameraTranslate.z=-FORWARD_VELOCITY*dt;
+
+
+		//	cameraTranslate.z=-FORWARD_VELOCITY*dt;
 		//cameraTranslate.z=-10*dt;
 		frameShipPosition=ship->getPosition();
 		//std::cout<<frameShipPosition << std::endl;
-		
+
 		//std::cout<<ship->getPosition()<<std::endl;
 		//ship->setPosition(Ogre::Vector3(frameShipPosition.x,frameShipPosition.y,frameShipPosition.z-FORWARD_VELOCITY*dt));
-		ship->setPosition(Ogre::Vector3(0.0f,0.0f,FORWARD_VELOCITY*dt));
+
 		//flyer->getSceneManager()->getSceneNode("cameraNode")->translate(camera->getPosition()-flyer->getSceneManager()->getSceneNode("cameraNode")->getPosition()*0.1f);
 		//camera->moveRelative(cameraTranslate);
 	}
 	//copy of the camera vector
 	Ogre::Vector3 camera2 = camera->getPosition();
 	float height = flyer -> getTerrainHeightAt(camera2.x,camera2.z);
-	
+
 	/*
 	if (spaceKeyPressed && jumpVelocity ==0.0f){
 	jumpVelocity = 10.0f;
@@ -157,23 +188,19 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 	}
 	*/
 	// std::cout << camera2.x << " " << camera2.y << " " << camera2.z << "\n";
+	frameShipPosition=ship->getPosition();
+	if (frameShipPosition.x<0||frameShipPosition.x>5000||frameShipPosition.z<0||frameShipPosition.z>5000){
+		dead=true;
 
-	if (camera2.x<5)
-		camera2.x=5;
-	if (camera2.x>4995)
-		camera2.x=4995;
-	if (camera2.z<5)
-		camera2.z=5; 
-	if (camera2.z>4995)
-		camera2.z=4995;
-	//camera->setPosition(camera2);
+	}
 
-	//cameraTranslate = Ogre::Vector3::ZERO;
-//frameShipPosition=ship->getPosition();
-//if(frameShipPosition.y< flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+20.0){
-//	ship->setPosition(Ogre::Vector3(0.0f,flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+20.0,0.0f));
-//	
-//}
+
+
+	if(frameShipPosition.y< flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+2.0){
+		dead=true;
+
+
+	}
 	if (flyer->getTerrainHeightAt(camera->getPosition().x,camera->getPosition().z)+15.0f >= camera->getPosition().y){
 		//flyer->adjustCameraHeightToTerrain();
 	}
@@ -187,16 +214,36 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 			enNum=100;
 		if (l==2)
 			enNum=200;
-		flyer->createNextLevel(4);
+		flyer->createNextLevel(l);
+		timeLeft=100.0f;
 		dead=false;
+		score=0;
 	}
+	//std::cout << "outside level press"<< std::endl;
 	int i;
-	for(i=0;i<enNum;i++){
-		if (!flyer->e[i]->update(dt)){
-			dead=true;
-		}
+	for(i=0;i<enNum;i++){									//THIS GUY WAS BREAKING EVERYTHING
+		/*if (!flyer->e[i]->update(dt)){
+		std::cout << "DEATH"<< std::endl;
+		dead=true;
+		}*/
+		score+=flyer->e[i]->update(dt);
+
+		updateScore(score);
+
+	}
+	if(incSpeedKeyDown && (FORWARD_VELOCITY < 400.0f)){
+		FORWARD_VELOCITY +=100*dt;
+	}
+	else if(decSpeedKeyDown && (FORWARD_VELOCITY > 20.0f)  && (100*dt <
+		20.0f) ){
+			FORWARD_VELOCITY -=100*dt;
 	}
 
+	if(maxSpeedKeyDown){
+		FORWARD_VELOCITY = 400.0f;
+		maxSpeedKeyDown = false;
+	}
+	//std::cout << "return true"<< std::endl;
 	return true;
 }
 //docs/manual/entities
@@ -231,14 +278,23 @@ bool RingFlyerFrameListener::keyPressed(const OIS::KeyEvent& event) {
   case OIS::KC_ESCAPE:
 	  shutdownKeyPressed = true;
 	  break;
-  case OIS::KC_LSHIFT:
-	  shiftKeyDown = true;
-	  break;
+
   case OIS::KC_SPACE:
 	  spaceKeyPressed = true;
 	  break;
   case OIS::KC_F1:
 	  levelKeyPressed =true;
+	  break;
+
+  case OIS::KC_LSHIFT:
+	  incSpeedKeyDown=true;
+	  break;
+  case OIS::KC_LCONTROL:
+	  decSpeedKeyDown=true;
+	  break;
+
+  case OIS::KC_CAPITAL:
+	  maxSpeedKeyDown=true;
 	  break;
 
 	}
@@ -260,14 +316,22 @@ bool RingFlyerFrameListener::keyReleased(const OIS::KeyEvent& event) {
   case OIS::KC_D:
 	  rightKeyDown = false;
 	  break;
-  case OIS::KC_LSHIFT:
-	  shiftKeyDown = false;
-	  break;
+
   case OIS::KC_SPACE:
 	  spaceKeyPressed = false;
 	  break;
   case OIS::KC_F1:
 	  levelKeyPressed =false;
+	  break;
+  case OIS::KC_LSHIFT:
+	  incSpeedKeyDown=false;
+	  break;
+  case OIS::KC_LCONTROL:
+	  decSpeedKeyDown=false;
+	  break;
+
+  case OIS::KC_CAPITAL:
+	  maxSpeedKeyDown=false;
 	  break;
 	}
 

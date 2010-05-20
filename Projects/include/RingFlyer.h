@@ -1,5 +1,5 @@
 // RingFlyer.h
-// @author Eric D. Wills
+
 
 #ifndef __RING_FLYER_H__
 #define __RING_FLYER_H__
@@ -20,7 +20,7 @@ class RingFlyer {
   Ogre::Root*               root;
   Ogre::SceneManager*       sceneManager;
   Ogre::RenderWindow*       renderWindow;
-  Ogre::Camera*             camera;
+  
   Ogre::RaySceneQuery*      raySceneQuery;
   Ogre::Ray                 terrainRay;
   Level*					level;
@@ -33,7 +33,7 @@ class RingFlyer {
   RingFlyer();
 
   ~RingFlyer();
-
+Ogre::Camera*             camera;
   Ogre::Root*         getRoot()         { return root; }
   Ogre::SceneManager* getSceneManager() { return sceneManager; }
   Ogre::RenderWindow* getRenderWindow() { return renderWindow; }

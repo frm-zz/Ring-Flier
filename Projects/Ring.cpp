@@ -6,16 +6,25 @@ const float Ring::CHASE_VELOCITY=0.50f;
 const float Ring::ACTIVATION_RADIUS=30.0f;
 const float Ring::RELAX_TIME=3;
 const float Ring::KILL_RADIUS=500.0f;
+
 Ring::Ring(Ogre::String name, RingFlyer* flyer):flyer(flyer)
 {
+	check=true;
+	//std::cout << "inside new ring"<< std::endl;
 	position.x=(rand()%5000);
 	
 	position.z=(rand()%5000);
 	//position.y=flyer->getTerrainHeightAt(position.x,position.z)+15.0f;
 	position.y=(rand()%500)+flyer->getTerrainHeightAt(position.x,position.z)+100.0f;
+	//std::cout << "set ring pos" << name << std::endl;
 
+	//Ogre::SceneNode* hello = flyer->getSceneManager()->getRootSceneNode();
+	//->createChildSceneNode("hello"+name);
+		//std::cout << "got root"<< hello << std::endl;
 	Ogre::SceneNode* sn = flyer->getSceneManager()->getRootSceneNode()->createChildSceneNode("sn"+name);
+	//std::cout << "created sceneNode"<< std::endl;
 		Ogre::Entity* ring = flyer->getSceneManager()->createEntity(name,"Torus.mesh");
+		//std::cout << "set ring name"<< std::endl;
 		//ring->setMaterialName("ring");
 		sn->attachObject(ring);
 		sn->scale(Ogre::Vector3(015.10f,015.10f,015.10f));
@@ -54,23 +63,19 @@ void Ring::moveTowards(const Ogre::Vector3 pos, float velocity, float elapsedTim
 	flyer->getSceneManager()->getSceneNode(nodeName)->setPosition(position);
 }
 
-bool Ring::update(float elapsedTime){
+int Ring::update(float elapsedTime){
+	if (this->check){
 	if (Ring::inRange(flyer->getSceneManager()->getSceneNode("shipNode")->getPosition(),Ring::ACTIVATION_RADIUS)){
-		//Ring::moveTowards(flyer->getCamera()->getPosition(),Ring::CHASE_VELOCITY,elapsedTime);
-		//Ring::chaseTime=Ring::RELAX_TIME;
+
 		flyer->getSceneManager()->getEntity(sphereName)->setMaterialName("Active_Sphere");
+		this->check=false;
+		return 1;
+		
 	}
-	else if(chaseTime>0.0){
-		//Ring::moveTowards(flyer->getCamera()->getPosition(),Ring::CHASE_VELOCITY,elapsedTime);
-		Ring::chaseTime-=elapsedTime;
-		//flyer->getSceneManager()->getEntity(sphereName)->setMaterialName("Relaxing_Sphere");
-	}
-	else{
-		//flyer->getSceneManager()->getEntity(sphereName)->setMaterialName("Inactive_Sphere");
-	}
-	if (Ring::inRange(flyer->getSceneManager()->getSceneNode("shipNode")->getPosition(),Ring::KILL_RADIUS)){
-		//return false;
-	}
-	return true;
+
+	
+	return 0;
+}
+	return 0;
 }
 

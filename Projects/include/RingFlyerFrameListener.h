@@ -16,7 +16,7 @@ class RingFlyerFrameListener : public Ogre::FrameListener, public OIS::MouseList
  private:
   static const float ROTATION_INCREMENT;
   static const float TRANSLATION_INCREMENT;
-  static const float FORWARD_VELOCITY;
+  static float FORWARD_VELOCITY;
 
   RingFlyer*         flyer;
   Ogre::RenderWindow*  renderWindow;
@@ -35,6 +35,9 @@ class RingFlyerFrameListener : public Ogre::FrameListener, public OIS::MouseList
   bool                 rightKeyDown;
   bool                 shutdownKeyPressed;
   bool				   shiftKeyDown;
+  bool				   incSpeedKeyDown;
+bool				   decSpeedKeyDown;
+bool				   maxSpeedKeyDown;
   bool				   spaceKeyPressed;
   bool				   levelKeyPressed;
   bool				   dead;
@@ -45,7 +48,7 @@ class RingFlyerFrameListener : public Ogre::FrameListener, public OIS::MouseList
   RingFlyerFrameListener(RingFlyer* flyer, Ship* ship);
 
   ~RingFlyerFrameListener();
-
+void RingFlyerFrameListener::setShip(Ship* ship);
 	bool frameStarted(const Ogre::FrameEvent& event);
 	bool frameEnded(const Ogre::FrameEvent& event);
 
@@ -55,6 +58,45 @@ class RingFlyerFrameListener : public Ogre::FrameListener, public OIS::MouseList
 
   bool keyPressed(const OIS::KeyEvent& event);
   bool keyReleased(const OIS::KeyEvent& event);
+  void showTimeOverlay(bool show)
+    {
+        Ogre::Overlay* o
+=Ogre::OverlayManager::getSingleton().getByName("Core/TimeOverlay");
+        if (!o)
+            OGRE_EXCEPT( Ogre::Exception::ERR_ITEM_NOT_FOUND, "Could not find overlay Core/DebugOverlay", "showDebugOverlay" );
+        if (show)
+            o->show();
+        else
+            o->hide();
+    }
+  void showScoreOverlay(bool show)
+    {
+        Ogre::Overlay* o
+=Ogre::OverlayManager::getSingleton().getByName("Core/ScoreOverlay");
+        if (!o)
+            OGRE_EXCEPT( Ogre::Exception::ERR_ITEM_NOT_FOUND, "Could not find overlay Core/DebugOverlay", "showDebugOverlay" );
+        if (show)
+            o->show();
+        else
+            o->hide();
+    }
+
+   void updateTime(float time)
+    {
+        // update stats when necessary
+        Ogre::OverlayElement* timePanel =
+		Ogre::OverlayManager::getSingleton().getOverlayElement("Core/Time");
+
+		timePanel->setCaption( Ogre::StringConverter::toString(time));
+    }
+   void updateScore(int score)
+    {
+        // update stats when necessary
+        Ogre::OverlayElement* scorePanel =
+		Ogre::OverlayManager::getSingleton().getOverlayElement("Core/ScoreCount");
+
+		scorePanel->setCaption( Ogre::StringConverter::toString(score));
+    }
 };
 
 #endif

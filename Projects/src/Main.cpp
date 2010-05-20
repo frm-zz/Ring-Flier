@@ -1,5 +1,4 @@
-// Main.cpp
-// @author Eric D. Wills
+
 
 #include "RingFlyer.h"
 

@@ -11,6 +11,7 @@ private:
 	static const float CHASE_VELOCITY;
 	static const float RELAX_TIME;
 	static const float KILL_RADIUS;
+	bool check;
 	float chaseTime;
 	Ogre::Vector3 position;
 	RingFlyer*         flyer;
@@ -26,7 +27,7 @@ public:
 	Ring(Ogre::String name, RingFlyer* flyer);
 	~Ring(void);
 
-	bool update(float elapsedTime);
+	int update(float elapsedTime);
 	
 
 };
