@@ -60,7 +60,9 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 	float dt = event.timeSinceLastFrame;
 	if (dead){
 		//t2=0.0f;
-		flyer->getSceneManager()->setFog(Ogre::FOG_LINEAR, Ogre::ColourValue(0.93f, 0.0f, 0.0f),0.001f,5.0f,100.0f);
+		//flyer->getSceneManager()->setFog(Ogre::FOG_LINEAR, Ogre::ColourValue(0.93f, 0.0f, 0.0f),0.001f,5.0f,100.0f);
+		
+
 		//updateTime(t2);
 	}
 
@@ -189,17 +191,17 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 	*/
 	// std::cout << camera2.x << " " << camera2.y << " " << camera2.z << "\n";
 	frameShipPosition=ship->getPosition();
-	if (frameShipPosition.x<0||frameShipPosition.x>5000||frameShipPosition.z<0||frameShipPosition.z>5000){
+	if ((frameShipPosition.x<0||frameShipPosition.x>5000||frameShipPosition.z<0||frameShipPosition.z>5000)&&!dead){
 		dead=true;
-
+		flyer->explosion();
 	}
 
 
 
-	if(frameShipPosition.y< flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+2.0){
+	if((frameShipPosition.y< flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+2.0)&&!dead){
 		dead=true;
-
-
+		flyer->deadEffect();
+		
 	}
 	if (flyer->getTerrainHeightAt(camera->getPosition().x,camera->getPosition().z)+15.0f >= camera->getPosition().y){
 		//flyer->adjustCameraHeightToTerrain();
@@ -227,7 +229,7 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 		dead=true;
 		}*/
 		score+=flyer->e[i]->update(dt);
-
+		
 		updateScore(score);
 
 	}

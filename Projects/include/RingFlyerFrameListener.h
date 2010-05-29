@@ -96,6 +96,8 @@ void RingFlyerFrameListener::setShip(Ship* ship);
 		Ogre::OverlayManager::getSingleton().getOverlayElement("Core/ScoreCount");
 
 		scorePanel->setCaption( Ogre::StringConverter::toString(score));
+		//RingFlyerFrameListener::flyer->scoreEffect();
+		//flyer->scoreEffect();
     }
 };
 

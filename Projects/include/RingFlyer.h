@@ -54,7 +54,9 @@ Ogre::Camera*             camera;
   Ogre::Vector3 getShipPosition();
 
   void init();
-
+  void scoreEffect();
+  void deadEffect();
+  void explosion();
  private:
   bool setup();
 };

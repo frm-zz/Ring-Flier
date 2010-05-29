@@ -9,6 +9,8 @@
 #include <time.h>
 #include "../Ring.h"
 #include "../Ship.h"
+#include "Ogre.h"
+//#include "OgreParticleEmitter.h"
 //#include <OgreTextAreaOverlayElement.h>
 //#include <OgreFontManager.h>
 
@@ -97,7 +99,7 @@ bool RingFlyer::setup() {
 	raySceneQuery = sceneManager->createRayQuery(terrainRay);
 	Ship* ship= new Ship(this);
 
-	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0f));
+	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-700.0f));
 	cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
 	cameraNode->attachObject(camera);
 	//Ogre::Entity* test = sceneManager->createEntity("test","sphere.mesh");
@@ -120,7 +122,19 @@ bool RingFlyer::setup() {
 
 	root->addFrameListener(frameListener);
 	Level* level = new Level(3,this);
-
+		Ogre::ParticleSystem* pSys = sceneManager->createParticleSystem("test","Examples/JetEngine1");
+		sceneManager->getSceneNode("shipNode")->createChildSceneNode("testNode",Ogre::Vector3(-8.0f,0.0f,-10.0f));
+		sceneManager->getRootSceneNode()->createChildSceneNode("testNode2",Ogre::Vector3(2500.0f,600.0f,2500.0f));
+	sceneManager->getSceneNode("shipNode")->attachObject(pSys);
+	//Ogre::ParticleSystem* pSysShimmer = sceneManager->createParticleSystem("ringShimmer","PEExamples/ringShimmer");
+	//sceneManager->getSceneNode("testNode2")->attachObject(sceneManager->getParticleSystem("ringShimmer"));
+	Ogre::ParticleSystem* pSys2 = sceneManager->createParticleSystem("test2","PEExamples/ringTest");
+sceneManager->getSceneNode("testNode")->attachObject(sceneManager->getParticleSystem("test2"));
+	sceneManager->getParticleSystem("test2")->getEmitter(0)->setEnabled(false);
+	//pSys->addEmitter("Point");
+	//sceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(sceneManager->createParticleSystem("Fountain", "Examples/PurpleFountain"));
+	
+	
 	return true;
 }
 void RingFlyer::createRings(int n){
@@ -171,7 +185,7 @@ void RingFlyer::createNextLevel(int x){
 	//std::cout << "deleted ship"<< std::endl;
 	Ship* ship= new Ship(this);
 	//std::cout << "made a new ship"<< std::endl;
-	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-380.0f));
+	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-700.0f));
 	//std::cout << "make a camera node"<< std::endl;
 	cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
 	//std::cout << "autotrack"<< std::endl;
@@ -183,8 +197,37 @@ void RingFlyer::createNextLevel(int x){
 
 	root->addFrameListener(frameListener);*/
 	frameListener->setShip(ship);
+		Ogre::ParticleSystem* pSys = sceneManager->createParticleSystem("test","PEExamples/ringTest");
+		sceneManager->getSceneNode("shipNode")->createChildSceneNode("testNode",Ogre::Vector3(0.0f,0.0f,0.0f));
+		//sceneManager->getSceneNode("shipNode")->(sceneManager->getSceneNode("testNode"));
+	sceneManager->getSceneNode("testNode")->attachObject(pSys);
 
 }
 Ogre::Vector3 RingFlyer::getShipPosition(){
 	return RingFlyer::ship->getPosition();
+}
+void RingFlyer::scoreEffect(){
+
+	//delete sceneManager->getParticleSystem("test2");
+//Ogre::ParticleSystem* pSys2 = sceneManager->createParticleSystem("test2","PEExamples/ringTest");
+	//	sceneManager->getSceneNode("shipNode")->createChildSceneNode("testNode",Ogre::Vector3(0.0f,0.0f,0.0f));
+		//sceneManager->getRootSceneNode()->createChildSceneNode("testNode",Ogre::Vector3(2500.0f,600.0f,2500.0f));
+	//sceneManager->getSceneNode("testNode")->detachObject(sceneManager->getParticleSystem("test2"));
+	//sceneManager->getSceneNode("testNode")->attachObject(sceneManager->getParticleSystem("test2"));
+	sceneManager->getParticleSystem("test2")->getEmitter(0)->setEnabled(true);
+	
+	//delete test2;
+	//delete pSys2;
+	//sceneManager->getSceneNode("testNode")->detachObject(pSys2);
+}
+void RingFlyer::deadEffect(){
+
+	Ogre::ParticleSystem* pSysDead1 = sceneManager->createParticleSystem("pSysDead1","PEExamples/shipFlame");
+	Ogre::ParticleSystem* pSysDead2 = sceneManager->createParticleSystem("pSysDead2","Examples/Smoke");
+	sceneManager->getSceneNode("testNode")->attachObject(sceneManager->getParticleSystem("pSysDead1"));
+	sceneManager->getSceneNode("testNode")->attachObject(sceneManager->getParticleSystem("pSysDead2"));
+}
+void RingFlyer::explosion(){
+Ogre::ParticleSystem* pSysExpl = sceneManager->createParticleSystem("pSysExpl","PEExamples/shipExpl");
+	sceneManager->getSceneNode("testNode")->attachObject(sceneManager->getParticleSystem("pSysExpl"));
 }

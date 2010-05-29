@@ -34,6 +34,8 @@ Ring::Ring(Ogre::String name, RingFlyer* flyer):flyer(flyer)
 		sn->setDirection(rand()%10,rand()%10,rand()%10,Ogre::Node::TransformSpace::TS_LOCAL,Ogre::Vector3::NEGATIVE_UNIT_Z);
 		sphereName=name;
 		chaseTime=0.0;
+		Ogre::ParticleSystem* pSysRing = flyer->getSceneManager()->createParticleSystem(sphereName+'p',"PEExamples/ringShimmer");
+		flyer->getSceneManager()->getSceneNode("sn"+sphereName)->attachObject(pSysRing);
 }
 
 Ring::~Ring(void)
@@ -69,6 +71,9 @@ int Ring::update(float elapsedTime){
 
 		flyer->getSceneManager()->getEntity(sphereName)->setMaterialName("Active_Sphere");
 		this->check=false;
+
+		flyer->scoreEffect();
+		flyer->getSceneManager()->getParticleSystem(sphereName+'p')->getEmitter(0)->setEnabled(false);
 		return 1;
 		
 	}
