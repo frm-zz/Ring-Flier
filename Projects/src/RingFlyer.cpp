@@ -206,7 +206,7 @@ void RingFlyer::createNextLevel(int x){
 	//	sceneManager->getRootSceneNode()->createChildSceneNode("testNode2",Ogre::Vector3(2500.0f,600.0f,2500.0f));
 	sceneManager->getSceneNode("engineNode")->attachObject(pSysEngine);
 		Ogre::ParticleSystem* pSysScore = sceneManager->createParticleSystem("pSysScore","PEExamples/ringTest");
-//sceneManager->getSceneNode("testNode")->attachObject(sceneManager->getParticleSystem("test2"));
+sceneManager->getSceneNode("shipNode")->attachObject(sceneManager->getParticleSystem("pSysScore"));
 	sceneManager->getParticleSystem("pSysScore")->getEmitter(0)->setEnabled(false);
 }
 Ogre::Vector3 RingFlyer::getShipPosition(){
