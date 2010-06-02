@@ -57,6 +57,7 @@ Ogre::Camera*             camera;
   void scoreEffect();
   void deadEffect();
   void explosion();
+ 
  private:
   bool setup();
 };

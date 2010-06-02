@@ -124,7 +124,7 @@ bool RingFlyer::setup() {
 	Level* level = new Level(3,this);
 		Ogre::ParticleSystem* pSysEngine = sceneManager->createParticleSystem("pSysEngine","Examples/JetEngine1");
 		sceneManager->getSceneNode("shipNode")->createChildSceneNode("engineNode",Ogre::Vector3(-8.0f,0.0f,-10.0f));
-		//sceneManager->getRootSceneNode()->createChildSceneNode("testNode2",Ogre::Vector3(2500.0f,600.0f,2500.0f));
+	
 	sceneManager->getSceneNode("engineNode")->attachObject(pSysEngine);
 		Ogre::ParticleSystem* pSysScore = sceneManager->createParticleSystem("pSysScore","PEExamples/ringTest");
 sceneManager->getSceneNode("shipNode")->attachObject(sceneManager->getParticleSystem("pSysScore"));
@@ -135,7 +135,15 @@ sceneManager->getSceneNode("shipNode")->attachObject(sceneManager->getParticleSy
 	//pSys->addEmitter("Point");
 	//sceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(sceneManager->createParticleSystem("Fountain", "Examples/PurpleFountain"));
 	
+	sceneManager->getRootSceneNode()->createChildSceneNode("wallNode1",Ogre::Vector3(2500.0f,500.0f,0.0f));
+
+		sceneManager->getRootSceneNode()->createChildSceneNode("wallNode2",Ogre::Vector3(2500.0f,500.0f,5000.0f));
+
+		sceneManager->getRootSceneNode()->createChildSceneNode("wallNode3",Ogre::Vector3(0.0f,500.0f,2500.0f));
+
+		sceneManager->getRootSceneNode()->createChildSceneNode("wallNode4",Ogre::Vector3(5000.0f,500.0f,2500.0f));
 	
+sceneManager->getRootSceneNode()->createChildSceneNode("rainNode",Ogre::Vector3(2500.0f,2000.0f,2500.0f));
 	return true;
 }
 void RingFlyer::createRings(int n){
@@ -185,6 +193,7 @@ void RingFlyer::createNextLevel(int x){
 	//std::cout << "setCameraPos"<< std::endl;
 
 	sceneManager->getRootSceneNode()->removeAndDestroyChild("shipNode");
+	
 	delete ship;
 	//std::cout << "deleted ship"<< std::endl;
 	Ship* ship= new Ship(this);
@@ -208,6 +217,19 @@ void RingFlyer::createNextLevel(int x){
 		Ogre::ParticleSystem* pSysScore = sceneManager->createParticleSystem("pSysScore","PEExamples/ringTest");
 sceneManager->getSceneNode("shipNode")->attachObject(sceneManager->getParticleSystem("pSysScore"));
 	sceneManager->getParticleSystem("pSysScore")->getEmitter(0)->setEnabled(false);
+	
+	//	sceneManager->getRootSceneNode()->createChildSceneNode("wallNode1",Ogre::Vector3(2500.0f,500.0f,0.0f));
+		Ogre::ParticleSystem* pSysWall1 = sceneManager->createParticleSystem("pSysWall1","PEExamples/wall1");
+sceneManager->getSceneNode("wallNode1")->attachObject(sceneManager->getParticleSystem("pSysWall1"));
+	//	sceneManager->getRootSceneNode()->createChildSceneNode("wallNode2",Ogre::Vector3(2500.0f,500.0f,5000.0f));
+		Ogre::ParticleSystem* pSysWall2 = sceneManager->createParticleSystem("pSysWall2","PEExamples/wall1");
+sceneManager->getSceneNode("wallNode2")->attachObject(sceneManager->getParticleSystem("pSysWall2"));
+		//sceneManager->getRootSceneNode()->createChildSceneNode("wallNode3",Ogre::Vector3(0.0f,500.0f,2500.0f));
+		Ogre::ParticleSystem* pSysWall3 = sceneManager->createParticleSystem("pSysWall3","PEExamples/wall2");
+sceneManager->getSceneNode("wallNode3")->attachObject(sceneManager->getParticleSystem("pSysWall3"));
+		//sceneManager->getRootSceneNode()->createChildSceneNode("wallNode4",Ogre::Vector3(5000.0f,500.0f,2500.0f));
+		Ogre::ParticleSystem* pSysWall4 = sceneManager->createParticleSystem("pSysWall4","PEExamples/wall2");
+sceneManager->getSceneNode("wallNode4")->attachObject(sceneManager->getParticleSystem("pSysWall4"));
 }
 Ogre::Vector3 RingFlyer::getShipPosition(){
 	return RingFlyer::ship->getPosition();

@@ -7,9 +7,9 @@ Level::Level(int x, RingFlyer* flyer)//:flyer(flyer)
 		//std::cout << "inside x==3 "<< std::endl;
 		//ONLY USED FOR INITIALIZATION
 		//flyer->destroyRings(200);
-		flyer->getSceneManager()->setWorldGeometry("terrain1.cfg");
+		flyer->getSceneManager()->setWorldGeometry("terrainspace.cfg");
 		//std::cout << "setWorldGeom "<< std::endl;
-		flyer->getSceneManager()->setSkyBox(true,"SkyBox_stormy",100);
+		flyer->getSceneManager()->setSkyBox(true,"SkyBox_purplenebula",100);
 		//std::cout << "setSkyBox "<< std::endl;
 		flyer->getSceneManager()->setAmbientLight(Ogre::ColourValue(0.5f, 0.5f, 0.5f));
 		Ogre::Light* light = flyer->getSceneManager()->createLight("PrimaryLight"); //do we need these?
@@ -27,8 +27,9 @@ Level::Level(int x, RingFlyer* flyer)//:flyer(flyer)
 	else if (x==0){
 		
 		flyer->destroyRings(200);
-		flyer->getSceneManager()->setWorldGeometry("terrain1.cfg");
-		flyer->getSceneManager()->setSkyBox(true,"SkyBox_stormy",50);
+		flyer->getSceneManager()->setWorldGeometry("terrainpace.cfg");
+		
+		flyer->getSceneManager()->setSkyBox(true,"SkyBox_purplenebula",50);
 		flyer->getSceneManager()->setAmbientLight(Ogre::ColourValue(0.5f, 0.5f, 0.5f));
 	//	Ogre::Light* light = flyer->getSceneManager()->createLight("PrimaryLight");
 		Ogre::Light* light = flyer->getSceneManager()->getLight("PrimaryLight");
@@ -54,10 +55,14 @@ Level::Level(int x, RingFlyer* flyer)//:flyer(flyer)
 		flyer->getSceneManager()->setFog(Ogre::FOG_EXP, fogColor, 0.00001f, 20.0f, 300.0f);
 		//flyer->getSceneManager()->setFog(Ogre::FOG_LINEAR, fogColor, 0.2, 100.0f, 200.0f);
 		flyer->createRings(100);
+		////Rain
+		
+		Ogre::ParticleSystem* pSysRain = flyer->getSceneManager()->createParticleSystem("pSysRain","Examples/Rain");
+flyer->getSceneManager()->getSceneNode("rainNode")->attachObject(flyer->getSceneManager()->getParticleSystem("pSysRain"));
 	}
 	else if (x==2){
 		flyer->destroyRings(100);
-		flyer->getSceneManager()->setWorldGeometry("terrain2.cfg");
+		flyer->getSceneManager()->setWorldGeometry("terrain3.cfg");
 		flyer->getSceneManager()->setSkyBox(true,"SkyBox_cloudy_noon",50);
 		//flyer->getSceneManager()->setAmbientLight(Ogre::ColourValue(0.3f, 0.1f, 0.1f));
 		Ogre::Light* light = flyer->getSceneManager()->getLight("PrimaryLight");

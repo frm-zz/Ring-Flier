@@ -191,14 +191,14 @@ bool RingFlyerFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 	*/
 	// std::cout << camera2.x << " " << camera2.y << " " << camera2.z << "\n";
 	frameShipPosition=ship->getPosition();
-	if ((frameShipPosition.x<0||frameShipPosition.x>5000||frameShipPosition.z<0||frameShipPosition.z>5000)&&!dead){
+	if ((frameShipPosition.x<0||frameShipPosition.x>5000||frameShipPosition.z<0||frameShipPosition.z>5000)&&!dead &&(l%3)!=0){
 		dead=true;
 		flyer->explosion();
 	}
 
 
 
-	if((frameShipPosition.y< flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+2.0)&&!dead){
+	if((frameShipPosition.y< flyer->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+2.0)&&!dead && (l%3)!=0){
 		dead=true;
 		flyer->deadEffect();
 		
