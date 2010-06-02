@@ -41,6 +41,7 @@ Ogre::Camera*             camera;
   Ring **e;
     Ship*						ship;
 	Ogre::SceneNode *cameraNode;
+	
   float getTerrainHeightAt(float x, float y);
 
   void adjustCameraHeightToTerrain();

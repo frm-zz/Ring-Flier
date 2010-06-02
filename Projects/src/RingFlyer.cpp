@@ -10,6 +10,7 @@
 #include "../Ring.h"
 #include "../Ship.h"
 #include "Ogre.h"
+#include "SoundManager.h"
 //#include "OgreParticleEmitter.h"
 //#include <OgreTextAreaOverlayElement.h>
 //#include <OgreFontManager.h>
@@ -98,7 +99,7 @@ bool RingFlyer::setup() {
 
 	raySceneQuery = sceneManager->createRayQuery(terrainRay);
 	Ship* ship= new Ship(this);
-
+	
 	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-700.0f));
 	cameraNode->setAutoTracking(true,sceneManager->getSceneNode("shipNode"));
 	cameraNode->attachObject(camera);
@@ -144,6 +145,23 @@ sceneManager->getSceneNode("shipNode")->attachObject(sceneManager->getParticleSy
 		sceneManager->getRootSceneNode()->createChildSceneNode("wallNode4",Ogre::Vector3(5000.0f,500.0f,2500.0f));
 	
 sceneManager->getRootSceneNode()->createChildSceneNode("rainNode",Ogre::Vector3(2500.0f,2000.0f,2500.0f));
+
+/*SoundManager* soundMgr;
+		soundMgr = SoundManager::createManager();
+ 
+		std::cout << soundMgr->listAvailableDevices();
+ 
+		soundMgr->init();
+		soundMgr->setAudioPath( (char*) ".\\" );
+ 
+                // Just for testing
+		unsigned int audioId=0;
+		soundMgr->loadAudio( "Explosion.wav", &audioId,true);
+		soundMgr->setSoundPosition(audioId,Ogre::Vector3(2500,500,2500));
+		soundMgr->setListenerPosition(camera->getPosition(),Ogre::Vector3(0.0,0.0,0.0),Ogre::Quaternion::IDENTITY);
+                soundMgr->playAudio( audioId,false );
+*/
+				
 	return true;
 }
 void RingFlyer::createRings(int n){

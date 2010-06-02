@@ -36,6 +36,7 @@ Ring::Ring(Ogre::String name, RingFlyer* flyer):flyer(flyer)
 		chaseTime=0.0;
 		Ogre::ParticleSystem* pSysRing = flyer->getSceneManager()->createParticleSystem(sphereName+'p',"PEExamples/ringShimmer");
 		flyer->getSceneManager()->getSceneNode("sn"+sphereName)->attachObject(pSysRing);
+		
 }
 
 Ring::~Ring(void)

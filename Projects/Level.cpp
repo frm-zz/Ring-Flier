@@ -27,7 +27,7 @@ Level::Level(int x, RingFlyer* flyer)//:flyer(flyer)
 	else if (x==0){
 		
 		flyer->destroyRings(200);
-		flyer->getSceneManager()->setWorldGeometry("terrainpace.cfg");
+		flyer->getSceneManager()->setWorldGeometry("terrainspace.cfg");
 		
 		flyer->getSceneManager()->setSkyBox(true,"SkyBox_purplenebula",50);
 		flyer->getSceneManager()->setAmbientLight(Ogre::ColourValue(0.5f, 0.5f, 0.5f));

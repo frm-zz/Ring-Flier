@@ -126,7 +126,7 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				EnableFiberSafeOptimizations="false"
-				AdditionalIncludeDirectories="include;&quot;$(OGRE_HOME)\include&quot;"
+				AdditionalIncludeDirectories="include;&quot;$(OGRE_HOME)\include&quot;;&quot;C:\Program Files\OpenAL 1.1 SDK\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				StringPooling="true"
 				MinimalRebuild="true"
@@ -150,10 +150,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib OIS.lib"
+				AdditionalDependencies="OgreMain.lib OIS.lib OpenAL32.lib alut.lib"
 				OutputFile="$(OutDir)/RingFlyer.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)\lib&quot;;&quot;C:\Program Files\OpenAL 1.1 SDK\libs\Win32&quot;"
 				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="false"
 				SubSystem="1"
@@ -223,6 +223,10 @@
 				RelativePath=".\Ship.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\src\SoundManager.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -251,6 +255,10 @@
 			</File>
 			<File
 				RelativePath=".\Ship.h"
+				>
+			</File>
+			<File
+				RelativePath=".\include\SoundManager.h"
 				>
 			</File>
 		</Filter>
