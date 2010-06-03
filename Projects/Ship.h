@@ -2,21 +2,19 @@
 #ifndef __SHIP_H__
 #define __SHIP_H__
 #include "Ogre.h"
-class RingFlyer;
-
+class RingFlier;
 class Ship
 {
 private:
 	Ogre::Vector3 shipPosition;
-	RingFlyer* flyer;
-	Ogre::String node;
+	RingFlier* flier;
+	Ogre::String nodeName;
 public:
-	Ship(RingFlyer* flyer);
+	Ship(RingFlier* flier);
 	~Ship(void);
-	void setPosition(Ogre::Vector3 position);
 	Ogre::Vector3 getPosition();
 	void setOrientation(float pitch, float roll);
-	Ogre::Vector3 getOrientation();
+	void setPosition(Ogre::Vector3 position);
 
 };
 #endif;
