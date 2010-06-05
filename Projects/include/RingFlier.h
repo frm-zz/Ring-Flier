@@ -1,17 +1,10 @@
-// RingFlier.h
-
-
 #ifndef __RING_FLIER_H__
 #define __RING_FLIER_H__
-
 #include "Ogre.h"
-
 class RingFlierFrameListener;
 class Level;
 class Ring;
 class Ship;
-
-
 class RingFlier {
 
 private:
@@ -23,6 +16,7 @@ private:
 	Ogre::RaySceneQuery*      raySceneQuery;
 	Ogre::Ray                 terrainRay;
 	Level*					level;
+	
 
 public:
 	RingFlier();
@@ -37,6 +31,8 @@ public:
 	Ogre::SceneNode *cameraNode;
 	Ogre::Vector3 getShipPosition();
 
+	void setSourcePos(int sourceNum, float xpos, float ypos, float zpos);
+	void setListenerPos(float xpos, float ypos, float zpos);
 	float getTerrainHeightAt(float x, float y);
 	void adjustCameraHeightToTerrain();
 	void createNextLevel(int Level);
@@ -46,6 +42,9 @@ public:
 	void scoreEffect();
 	void deadEffect();
 	void explosion();
+	void explosionSound();
+	void clockSound();
+	void stopClockSound();
 
 private:
 	bool setup();

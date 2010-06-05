@@ -1,10 +1,7 @@
-// RingFlierFrameListener.cpp
-
-
 #include "RingFlierFrameListener.h"
 #include "RingFlier.h"
-#include "../Ring.h"
-#include "../Ship.h"
+#include "Ring.h"
+#include "Ship.h"
 
 const float RingFlierFrameListener::ROTATION_INCREMENT    = 1.5f;
 const float RingFlierFrameListener::TRANSLATION_INCREMENT = 30.0f;
@@ -57,6 +54,9 @@ bool RingFlierFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 	if(timeLeft<=0.0f){
 		dead=true;
 	}
+	else if(timeLeft <= 10.0f){
+		flier->clockSound();
+	}
 
 	if(!dead){
 		timeLeft-=dt;
@@ -76,18 +76,17 @@ bool RingFlierFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 			roll+=ROTATION_INCREMENT*dt;
 		}
 		ship->setOrientation(cameraPitch,roll);
-
 			cameraPitch=0.0f;
 			roll=0.0f;
-			frameShipPosition=ship->getPosition();
 			ship->setPosition(Ogre::Vector3(0.0f,0.0f,FORWARD_VELOCITY*dt));
-
-	frameShipPosition=ship->getPosition();
+			frameShipPosition=ship->getPosition();
 	if ((frameShipPosition.x<0||frameShipPosition.x>5000||frameShipPosition.z<0||frameShipPosition.z>5000) &&(level%3)!=0){
 		dead=true;
 		flier->explosion();
+
 	}
 	if((frameShipPosition.y< flier->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+2.0) && (level%3)!=0){
+		flier->getSceneManager()->getSceneNode("shipNode")->setPosition(Ogre::Vector3(frameShipPosition.x,flier->getTerrainHeightAt(frameShipPosition.x,frameShipPosition.z)+2.0,frameShipPosition.z));
 		dead=true;
 		flier->deadEffect();
 	}
@@ -131,10 +130,6 @@ bool RingFlierFrameListener::frameStarted(const Ogre::FrameEvent& event) {
 		}
 	}
 
-	if(maxSpeedKeyDown){
-		FORWARD_VELOCITY = 400.0f;
-		maxSpeedKeyDown = false;
-	}
 	return true;
 }
 
@@ -177,9 +172,6 @@ bool RingFlierFrameListener::keyPressed(const OIS::KeyEvent& event) {
   case OIS::KC_LCONTROL:
 	  decSpeedKeyDown=true;
 	  break;
-  case OIS::KC_CAPITAL:
-	  maxSpeedKeyDown=true;
-	  break;
 	}
 	return true;
 }
@@ -209,9 +201,6 @@ bool RingFlierFrameListener::keyReleased(const OIS::KeyEvent& event) {
 	  break;
   case OIS::KC_LCONTROL:
 	  decSpeedKeyDown=false;
-	  break;
-  case OIS::KC_CAPITAL:
-	  maxSpeedKeyDown=false;
 	  break;
 	}
 	return true;

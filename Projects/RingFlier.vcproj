@@ -196,7 +196,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\Level.cpp"
+				RelativePath=".\src\Level.cpp"
 				>
 			</File>
 			<File
@@ -204,7 +204,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Ring.cpp"
+				RelativePath=".\src\Ring.cpp"
 				>
 			</File>
 			<File
@@ -216,7 +216,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Ship.cpp"
+				RelativePath=".\src\Ship.cpp"
 				>
 			</File>
 			<File
@@ -230,11 +230,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Level.h"
+				RelativePath=".\include\Level.h"
 				>
 			</File>
 			<File
-				RelativePath=".\Ring.h"
+				RelativePath=".\include\Ring.h"
 				>
 			</File>
 			<File
@@ -246,7 +246,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Ship.h"
+				RelativePath=".\include\Ship.h"
 				>
 			</File>
 			<File

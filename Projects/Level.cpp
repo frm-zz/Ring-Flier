@@ -41,9 +41,11 @@ Level::Level(int x, RingFlier* flier)//:flier(flier)
 
 		////Rain
 		Ogre::ParticleSystem* pSysRain = flier->getSceneManager()->createParticleSystem("pSysRain","Examples/Rain");
-		pSysRain->fastForward(Ogre::Real(17.0f), Ogre::Real(0.100000));
-		flier->getSceneManager()->getSceneNode("rainNode")->attachObject(flier->getSceneManager()->getParticleSystem("pSysRain"));
+	
 
+		flier->getSceneManager()->getSceneNode("rainNode")->attachObject(pSysRain);
+pSysRain->fastForward(3);
+pSysRain->setDefaultNonVisibleUpdateTimeout(3);
 
 		//////////////Make Level Walls////////////////////
 		Ogre::ParticleSystem* pSysWall1 = flier->getSceneManager()->createParticleSystem("pSysWall1","PEExamples/wall1");

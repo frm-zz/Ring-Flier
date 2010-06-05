@@ -1,18 +1,84 @@
-// RingFlier.cpp
-
-
-#include "../Level.h"
+#include "Level.h"
 #include "RingFlier.h"
 #include "RingFlierFrameListener.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../Ring.h"
-#include "../Ship.h"
+#include "Ring.h"
+#include "Ship.h"
 #include "Ogre.h"
 #include "SoundManager.h"
+#include <string>
+
+//Sound globals
+#define NUM_BUFFERS 205
+#define NUM_SOURCES 205
+#define NUM_ENVIRONMENTS 1
+
+ALfloat listenerPos[]={500.0,500.0,500.0};
+ALfloat listenerVel[]={0.0,0.0,0.0};
+ALfloat	listenerOri[]={0.0,0.0,1.0, 0.0,1.0,0.0};
+ALfloat source0Pos[]={ 500.0, 500.0, 500.0};
+ALfloat source0Vel[]={ 0.0, 0.0, 0.0};
+
+ALuint	buffer[NUM_BUFFERS];
+ALuint	source[NUM_SOURCES];
+ALuint  environment[NUM_ENVIRONMENTS];
+ALboolean ALtrue;
+ALsizei size,freq;
+ALenum 	format;
+ALvoid 	*data;
+int 	ch;
+int ambientNum = 201;
+int explosionNum = 202;
+int clockNum = 203;
+bool clockGoing = false;
+//end sound globals
+
 
 RingFlier::RingFlier() : root(new Ogre::Root()), frameListener(NULL), raySceneQuery(NULL) {
+}
+
+void RingFlier::setSourcePos(int sourceNum, float xpos, float ypos, float zpos){
+	ALfloat tempPos[] = {xpos, ypos, zpos};
+	ALfloat tempVel[] = {0.0, 0.0, 0.0};
+
+	std::string filename ="ring" + Ogre::StringConverter().toString(sourceNum%5 +1) + ".wav";
+	alutLoadWAVFile((ALbyte*)filename.c_str(),&format,&data,&size,&freq,&ALtrue);
+    alBufferData(buffer[sourceNum],format,data,size,freq);
+    alutUnloadWAV(format,data,size,freq);
+
+	alSourcef(source[sourceNum],AL_PITCH,1.0f);
+    alSourcef(source[sourceNum],AL_GAIN,0.4f);
+	alSourcef(source[sourceNum],AL_ROLLOFF_FACTOR, 20.0f);
+	alSourcef(source[sourceNum],AL_MAX_DISTANCE, 5000.0f);
+    alSourcefv(source[sourceNum],AL_POSITION,tempPos);
+    alSourcefv(source[sourceNum],AL_VELOCITY,tempVel);
+    alSourcei(source[sourceNum],AL_BUFFER,buffer[sourceNum]);
+    alSourcei(source[sourceNum],AL_LOOPING,AL_TRUE);
+}
+
+void RingFlier::setListenerPos(float xpos, float ypos, float zpos){
+	ALfloat tempPos[] = {xpos, ypos, zpos};
+	ALfloat tempVel[] = {0.0, 0.0, 0.0};
+	Ogre::Vector3 tempy, tempz;
+	ALfloat tempOrient[] = {0.0, 0.0, 0.0,   0.0, 0.0, 0.0};	
+    
+	Ogre::Quaternion tempQuat = sceneManager->getSceneNode("shipNode")->getOrientation();
+	tempy = tempQuat.yAxis();
+	tempz = tempQuat.zAxis();
+
+	tempOrient[0] = tempz.x;
+	tempOrient[1] = tempz.y;
+	tempOrient[2] = tempz.z;
+
+	tempOrient[3] = 0.0;
+	tempOrient[4] = tempy.y;
+	tempOrient[5] = 0.0;
+
+	alListenerfv(AL_ORIENTATION,tempOrient);
+	alListenerfv(AL_POSITION,tempPos);
+    alListenerfv(AL_VELOCITY,tempVel);
 }
 
 RingFlier::~RingFlier() {
@@ -31,8 +97,6 @@ float RingFlier::getTerrainHeightAt(float x, float z) {
 	Ogre::RaySceneQueryResult::iterator qi  = queryResult.begin();
 	return (qi != queryResult.end() && qi->worldFragment) ? qi->worldFragment->singleIntersection.y : 0.0f;
 }
-
-
 
 void RingFlier::adjustCameraHeightToTerrain() {
 	const Ogre::Vector3& cameraPos = camera->getPosition();
@@ -66,7 +130,7 @@ bool RingFlier::setup() {
 
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 
-	// craete scene manager
+	// create scene manager
 	sceneManager = root->createSceneManager("TerrainSceneManager");
 
 	Ogre::ColourValue fogColor(0.93f, 0.86f, 0.76f);
@@ -88,7 +152,61 @@ bool RingFlier::setup() {
 
 	terrainRay.setDirection(Ogre::Vector3::NEGATIVE_UNIT_Y);
 	raySceneQuery = sceneManager->createRayQuery(terrainRay);
-	
+
+//sound init
+	alutInit(0, NULL);
+
+    alListenerfv(AL_POSITION,listenerPos);
+    alListenerfv(AL_VELOCITY,listenerVel);
+    alListenerfv(AL_ORIENTATION,listenerOri);
+    
+    alGetError(); // clear any error messages
+    
+    if(alGetError() != AL_NO_ERROR) 
+    {
+        printf("- Error creating buffers !!\n");
+        exit(1);
+    }
+    else
+    {
+        printf("init() - No errors yet.");
+
+    }
+    
+    // Generate buffers, or else no sound will happen!
+    alGenBuffers(NUM_BUFFERS, buffer);
+    alGetError(); /* clear error */
+    alGenSources(NUM_SOURCES, source);
+
+    if(alGetError() != AL_NO_ERROR) 
+    {
+        printf("- Error creating sources !!\n");
+        exit(2);
+    }
+    else
+    {
+        printf("init - no errors after alGenSources\n");
+    }
+
+	//setup for ambient1
+	ALfloat tempPos[] = {0, 0, 0};
+	ALfloat tempVel[] = {0.0, 0.0, 0.0};	
+
+	alutLoadWAVFile("ambient1.wav",&format,&data,&size,&freq,&ALtrue);
+    alBufferData(buffer[ambientNum],format,data,size,freq);
+    alutUnloadWAV(format,data,size,freq);
+
+	alSourcef(source[ambientNum],AL_PITCH,1.0f);
+    alSourcef(source[ambientNum],AL_GAIN,0.2f);
+    alSourcefv(source[ambientNum],AL_POSITION,tempPos);
+    alSourcefv(source[ambientNum],AL_VELOCITY,tempVel);
+    alSourcei(source[ambientNum],AL_BUFFER,buffer[ambientNum]);
+    alSourcei(source[ambientNum],AL_LOOPING,AL_TRUE);
+	alSourcePlay(source[ambientNum]);
+	alDistanceModel(AL_LINEAR_DISTANCE);
+
+//end sound init
+
 	Ship* ship= new Ship(this);
 
 	cameraNode= sceneManager->getSceneNode("shipNode")->createChildSceneNode("cameraNode",Ogre::Vector3(0.0,0.0,-700.0f));
@@ -118,22 +236,6 @@ bool RingFlier::setup() {
 	//////Node created at the top of the level for making rain
 	sceneManager->getRootSceneNode()->createChildSceneNode("rainNode",Ogre::Vector3(2500.0f,2000.0f,2500.0f));
 
-	/*SoundManager* soundMgr;
-	soundMgr = SoundManager::createManager();
-
-	std::cout << soundMgr->listAvailableDevices();
-
-	soundMgr->init();
-	soundMgr->setAudioPath( (char*) ".\\" );
-
-	// Just for testing
-	unsigned int audioId=0;
-	soundMgr->loadAudio( "Explosion.wav", &audioId,true);
-	soundMgr->setSoundPosition(audioId,Ogre::Vector3(2500,500,2500));
-	soundMgr->setListenerPosition(camera->getPosition(),Ogre::Vector3(0.0,0.0,0.0),Ogre::Quaternion::IDENTITY);
-	soundMgr->playAudio( audioId,false );
-	*/
-
 	return true;
 }
 void RingFlier::createRings(int n){
@@ -141,17 +243,23 @@ void RingFlier::createRings(int n){
 	e=new Ring*[n];
 	for (i=0;i<n;i++){
 		e[i]=new Ring(Ogre::StringConverter::toString(i),this);
+		//setSourcePos(i, sceneManager->getSceneNode("sn"+ e[i]->ringName)->getPosition().x,sceneManager->getSceneNode("sn"+ e[i]->ringName)->getPosition().y, sceneManager->getSceneNode("sn"+ e[i]->ringName)->getPosition().z);
+		setSourcePos(i, e[i]->position.x, e[i]->position.y, e[i]->position.z);
+		//std::cout << e[i]->position.x<<" "<< e[i]->position.y<<" "<< e[i]->position.z <<"\n";
+		//std::cout << "SLDKFJKLGDJHGS "<< i << "\n";
+		alSourcePlay(source[i]);
 	}
 }
 void RingFlier::destroyRings(int n){
 	int i;
 	for (i=0;i<n;i++){
 		sceneManager->getRootSceneNode()->removeAndDestroyChild("sn" + Ogre::StringConverter::toString(i));
+		alSourceStop((ALuint) i);
 	}
 }
-
-
 void RingFlier::createNextLevel(int x){
+	clockGoing = false;
+	stopClockSound();
 
 	sceneManager->destroyAllEntities();
 	sceneManager->destroyAllParticleSystems();
@@ -191,9 +299,53 @@ void RingFlier::deadEffect(){
 	Ogre::ParticleSystem* pSysDead2 = sceneManager->createParticleSystem("pSysDead2","Examples/Smoke");
 	sceneManager->getSceneNode("shipNode")->attachObject(sceneManager->getParticleSystem("pSysDead1"));
 	sceneManager->getSceneNode("shipNode")->attachObject(sceneManager->getParticleSystem("pSysDead2"));
+	explosionSound();
 }
 
 void RingFlier::explosion(){
 	Ogre::ParticleSystem* pSysExpl = sceneManager->createParticleSystem("pSysExpl","PEExamples/shipExpl");
 	sceneManager->getSceneNode("shipNode")->attachObject(sceneManager->getParticleSystem("pSysExpl"));
+	explosionSound();
 }
+
+void RingFlier::explosionSound(){
+ALfloat tempPos[] = {0, 0, 0};
+	ALfloat tempVel[] = {0.0, 0.0, 0.0};
+	alutLoadWAVFile("Explosion.wav",&format,&data,&size,&freq,&ALtrue);
+    alBufferData(buffer[explosionNum],format,data,size,freq);
+    alutUnloadWAV(format,data,size,freq);
+
+	alSourcef(source[explosionNum],AL_PITCH,1.0f);
+    alSourcef(source[explosionNum],AL_GAIN,1.0f);
+    alSourcefv(source[explosionNum],AL_POSITION,tempPos);
+    alSourcefv(source[explosionNum],AL_VELOCITY,tempVel);
+    alSourcei(source[explosionNum],AL_BUFFER,buffer[explosionNum]);
+    alSourcei(source[explosionNum],AL_LOOPING,AL_FALSE);
+	alSourcePlay(source[explosionNum]);
+	alSourceStop(source[clockNum]);
+}
+
+void RingFlier::clockSound(){
+	if(!clockGoing){
+		ALfloat tempPos[] = {0, 0, 0};
+		ALfloat tempVel[] = {0.0, 0.0, 0.0};
+		alutLoadWAVFile("clock.wav",&format,&data,&size,&freq,&ALtrue);
+		alBufferData(buffer[clockNum],format,data,size,freq);
+		alutUnloadWAV(format,data,size,freq);
+
+		alSourcef(source[clockNum],AL_PITCH,1.0f);
+		alSourcef(source[clockNum],AL_GAIN,2.0f);
+		alSourcefv(source[clockNum],AL_POSITION,tempPos);
+		alSourcefv(source[clockNum],AL_VELOCITY,tempVel);
+		alSourcei(source[clockNum],AL_BUFFER,buffer[clockNum]);
+		alSourcei(source[clockNum],AL_LOOPING,AL_TRUE);
+		alSourcePlay(source[clockNum]);
+		clockGoing = true;
+	}
+
+}
+void RingFlier::stopClockSound(){
+	alSourceStop(source[clockNum]);
+	clockGoing = false;
+}
+
